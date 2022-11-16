@@ -7,9 +7,9 @@ A library for running TF
 1. Requires [libtensorflow](https://www.tensorflow.org/install/lang_c) to be installed
    * there is a [guide to building it](https://www.tensorflow.org/lite/guide/build_cmake)
    * you can use `./build_tensorflowlite.sh` to automate this
-   * build the project `shards build`
    * then requires `export LD_LIBRARY_PATH=/usr/local/lib` to run
-   * execute the program `./bin/deadcatting`
+   * test if installed successfully `crystal ./src/tensorflow_lite.cr`
+      * this will output `Launching with tensorflow lite vx.x.x`
 
 2. Add the dependency to your `shard.yml`:
 
@@ -45,4 +45,4 @@ there is an issue tracking [this problem](https://github.com/crystal-lang/crysta
 
 ## Contributors
 
-- [Stephen von Takach](https://github.com/stakach) - creator and maintainer
+* [Stephen von Takach](https://github.com/stakach) - creator and maintainer
