@@ -8,7 +8,7 @@ class TensorflowLite::Interpreter
       allocate_tensors
     rescue error
       # ensure cleanup if allocate_tensors fails
-      LibTensorflowLite.interpreter_options_delete(tf_interpreter_ptr)
+      LibTensorflowLite.interpreter_delete(tf_interpreter_ptr)
       raise error
     end
   end
@@ -20,7 +20,7 @@ class TensorflowLite::Interpreter
   getter options : InterpreterOptions
 
   def finalize
-    LibTensorflowLite.interpreter_options_delete(@tf_interpreter_ptr)
+    LibTensorflowLite.interpreter_delete(@tf_interpreter_ptr)
   end
 
   protected def allocate_tensors
