@@ -8,7 +8,15 @@ module TensorflowLite
     VERSION = {{ `shards version "#{__DIR__}"`.chomp.stringify.downcase }}
   {% end %}
 
-  Log.info { "Launching with tensorflow lite v#{String.new(LibTensorflowLite.version)}" }
+  def self.version
+    String.new(LibTensorflowLite.version)
+  end
+
+  def self.schema_version
+    LibTensorflowLite.schema_version
+  end
+
+  Log.info { "Launching with tensorflow lite v#{TensorflowLite.version}" }
 
   # https://www.tensorflow.org/lite/examples/object_detection/overview
   # need to do a bunch of pre-processing: https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/android
