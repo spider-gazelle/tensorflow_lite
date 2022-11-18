@@ -2,6 +2,10 @@ require "box"
 require "va_list"
 require "./lib_tensorflowlite"
 
+lib C
+  fun vasprintf(strp : LibC::Char**, format : LibC::Char*, ap : Void*) : LibC::Int
+end
+
 class TensorflowLite::InterpreterOptions
   def initialize
     tf_options_ptr = LibTensorflowLite.interpreter_options_create
@@ -25,9 +29,16 @@ class TensorflowLite::InterpreterOptions
     callback_ptr = Box.box(callback)
     @callback_ref = callback_ptr
     LibTensorflowLite.interpreter_options_set_error_reporter(tf_options_ptr, ->(boxed_callback, raw_message, raw_args) {
-      va_list = VaList.new(raw_args)
+      result = C.vasprintf(out msg, raw_message, raw_args)
+      if result != -1
+        formatted_msg = String.new(msg)
+        LibC.free(msg.as(Pointer(Void)))
+      else
+        # failed to format the string, we'll use the message passed to us as a fallback
+        formatted_msg = String.new(raw_message)
+      end
       unboxed_callback = Box(typeof(callback)).unbox(boxed_callback)
-      unboxed_callback.call(String.new(raw_message))
+      unboxed_callback.call(formatted_msg)
       nil
     }, callback_ptr)
   end
