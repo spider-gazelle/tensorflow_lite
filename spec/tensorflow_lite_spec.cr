@@ -18,7 +18,7 @@ module TensorflowLite
 
       {Model.new(model_path), Model.new(file_data)}.each do |model|
         opts = InterpreterOptions.new
-        opts.set_error_reporter do |error_msg|
+        opts.on_error do |error_msg|
           puts "error was #{error_msg}"
         end
         interpreter = Interpreter.new(model, opts)
@@ -53,7 +53,7 @@ module TensorflowLite
       opts.num_threads(-4)
 
       last_error = ""
-      opts.set_error_reporter do |error_msg|
+      opts.on_error do |error_msg|
         last_error = error_msg
       end
 

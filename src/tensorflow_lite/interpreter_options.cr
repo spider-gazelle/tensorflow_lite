@@ -10,7 +10,7 @@ class TensorflowLite::InterpreterOptions
   end
 
   getter tf_options_ptr : LibTensorflowLite::InterpreterOptions
-  @callback_ref : Array(Pointer(Void)) = [] of Pointer(Void)
+  @callback_ref : Pointer(Void)? = nil
 
   def finalize
     LibTensorflowLite.interpreter_options_delete(@tf_options_ptr)
@@ -20,10 +20,10 @@ class TensorflowLite::InterpreterOptions
     LibTensorflowLite.interpreter_options_set_num_threads(tf_options_ptr, count.to_i32)
   end
 
-  def set_error_reporter(&callback : String -> Nil)
+  def on_error(&callback : String -> Nil)
     # we need our callback to be available
     callback_ptr = Box.box(callback)
-    @callback_ref << callback_ptr
+    @callback_ref = callback_ptr
     LibTensorflowLite.interpreter_options_set_error_reporter(tf_options_ptr, ->(boxed_callback, raw_message, raw_args) {
       va_list = VaList.new(raw_args)
       unboxed_callback = Box(typeof(callback)).unbox(boxed_callback)
