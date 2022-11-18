@@ -16,7 +16,7 @@ class TensorflowLite::InterpreterOptions
     LibTensorflowLite.interpreter_options_delete(@tf_options_ptr)
   end
 
-  def set_thread_count(count : Int)
+  def num_threads(count : Int)
     LibTensorflowLite.interpreter_options_set_num_threads(tf_options_ptr, count.to_i32)
   end
 
