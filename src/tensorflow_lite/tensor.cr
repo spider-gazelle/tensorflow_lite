@@ -1,6 +1,6 @@
 require "./lib_tensorflowlite"
 
-struct Tensor
+struct TensorflowLite::Tensor
   def initialize(tf_tensor_ptr : LibTensorflowLite::Tensor)
     raise "not a valid tensor pointer" if tf_tensor_ptr.null?
     @tf_tensor_ptr = tf_tensor_ptr

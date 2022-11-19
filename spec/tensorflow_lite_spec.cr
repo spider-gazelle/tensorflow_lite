@@ -9,6 +9,7 @@ module TensorflowLite
       {input: {0.0_f32, 1.0_f32}, result: 1},
       {input: {1.0_f32, 1.0_f32}, result: 0},
     }
+    invalid_threads_error = "num_threads should be >=0 or just -1 to let TFLite runtime set the value."
 
     it "init a model from a path and blob" do
       file_io = File.new(model_path)
@@ -63,7 +64,34 @@ module TensorflowLite
       result = interpreter.invoke
       result.should eq Interpreter::Status::Ok
 
-      last_error.should eq "num_threads should be >=0 or just -1 to let TFLite runtime set the value."
+      last_error.should eq invalid_threads_error
+    end
+
+    it "works via the client" do
+      last_error = ""
+      client = Client.new(model_path, threads: -4) do |error_msg|
+        last_error = error_msg
+      end
+
+      xor_test.each do |test|
+        inputs = test[:input]
+        expected = test[:result]
+
+        # configure inputs
+        floats = client[0].as_f32
+        floats[0], floats[1] = inputs
+
+        # run through NN
+        client.invoke!
+
+        # check results
+        floats = client.results.as_f32
+        result = (floats[0] + 0.5_f32).to_i
+
+        result.should eq expected
+      end
+
+      last_error.should eq invalid_threads_error
     end
   end
 end
