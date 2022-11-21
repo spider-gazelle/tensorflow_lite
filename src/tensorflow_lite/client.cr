@@ -53,6 +53,6 @@ class TensorflowLite::Client
   end
 
   def outputs
-    (0...input_tensor_count).map { |index| output_tensor(index) }
+    (0...output_tensor_count).map { |index| output_tensor(index) }
   end
 end
