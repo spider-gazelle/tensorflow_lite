@@ -1,6 +1,8 @@
 require "../tensorflow_lite"
 
 class TensorflowLite::Client
+  include Indexable(Tensor)
+
   def initialize(model : Bytes | Path | Model | String, threads : Int? = nil, &on_error : String -> Nil)
     @model = case model
              in String
@@ -38,7 +40,7 @@ class TensorflowLite::Client
   delegate invoke, invoke!, output_tensor, output_tensor_count, to: @interpreter
   delegate input_tensor, input_tensor_count, to: @interpreter
 
-  def [](index : Int)
+  def unsafe_fetch(index : Int)
     input_tensor(index)
   end
 
@@ -46,7 +48,11 @@ class TensorflowLite::Client
     input_tensor_count
   end
 
-  def results(index : Int = 0)
+  def output(index : Int = 0)
     output_tensor(index)
+  end
+
+  def outputs
+    (0...input_tensor_count).map { |index| output_tensor(index) }
   end
 end

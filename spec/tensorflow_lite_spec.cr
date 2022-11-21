@@ -86,13 +86,15 @@ module TensorflowLite
         client.invoke!
 
         # check results
-        floats = client.results.as_f32
+        floats = client.output.as_f32
         result = (floats[0] + 0.5_f32).to_i
 
         result.should eq expected
       end
 
       last_error.should eq invalid_threads_error
+      client.outputs.size.should eq 1
+      client.output.should eq client.outputs[0]
     end
   end
 end
