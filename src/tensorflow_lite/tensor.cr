@@ -62,7 +62,7 @@ struct TensorflowLite::Tensor
   end
 
   # attempts to calculate the number on inputs based on the type
-  def size
+  def number_of_inputs
     klass_size = case type
                  when .float32?
                    sizeof(Float32)
