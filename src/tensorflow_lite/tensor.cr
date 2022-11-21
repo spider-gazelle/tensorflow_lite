@@ -1,6 +1,8 @@
 require "./lib_tensorflowlite"
 
 struct TensorflowLite::Tensor
+  include Indexable(Int32)
+
   def initialize(tf_tensor_ptr : LibTensorflowLite::Tensor)
     raise "not a valid tensor pointer" if tf_tensor_ptr.null?
     @tf_tensor_ptr = tf_tensor_ptr
@@ -37,6 +39,15 @@ struct TensorflowLite::Tensor
   def dimension_size(index : Int) : Int32
     raise IndexError.new if index >= dimensions || index < 0
     LibTensorflowLite.tensor_dim(@tf_tensor_ptr, index.to_i32).to_i
+  end
+
+  # dimensions are indexed
+  def unsafe_fetch(index : Int)
+    dimension_size(index)
+  end
+
+  def size
+    dimensions
   end
 
   # buffer that makes up the tensor input
