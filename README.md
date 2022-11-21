@@ -27,9 +27,7 @@ A library for running TF
 require "tensorflow_lite"
 ```
 
-## Future
-
-Planning on including a metadata extraction tool for tensorflow models
+you can use the example metadata extractor to obtain the metadata for TF Lite models downloaded from [tfhub.dev](https://tfhub.dev/s?deployment-format=lite)
 
 ## Development
 

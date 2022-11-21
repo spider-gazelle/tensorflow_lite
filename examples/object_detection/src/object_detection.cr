@@ -146,7 +146,6 @@ original_cropped = canvas
 io = IO::Memory.new
 StumpyPNG.write(canvas, io)
 bytes = io.to_slice
-size = ImageSize.get bytes
 
 # resize the image for the NN
 # FIX:: this will squash non-square images, we probably want to cut off the edges
