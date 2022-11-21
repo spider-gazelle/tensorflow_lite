@@ -1,0 +1,32 @@
+name: object_detection
+version: 0.1.0
+
+targets:
+  object_detection:
+    main: src/object_detection.cr
+
+dependencies:
+  # models require images to be a certain size
+  image_size:
+    # github: hkalexling/image_size.cr
+    github: stakach/image_size.cr
+    branch: master
+
+  # we use stumpy to extract each pixels colour and draw bounding boxes
+  stumpy_png:
+    github: stumpycr/stumpy_png
+
+  stumpy_jpeg:
+    github: reiswindy/stumpy_jpeg
+  
+  stumpy_utils:
+    github: stumpycr/stumpy_utils
+
+  # tensorflow library bindings
+  tensorflow_lite:
+    github: spider-gazelle/tensorflow_lite
+
+authors:
+  - Stephen von Takach <steve@place.tech>
+
+license: MIT

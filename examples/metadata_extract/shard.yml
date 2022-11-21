@@ -1,0 +1,11 @@
+name: metadata_extract
+version: 1.0.0
+
+targets:
+  metadata_extract:
+    main: src/metadata_extract.cr
+
+authors:
+  - Stephen von Takach <steve@place.tech>
+
+license: MIT

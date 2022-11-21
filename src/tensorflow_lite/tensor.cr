@@ -85,7 +85,8 @@ struct TensorflowLite::Tensor
                  when .int64?
                    sizeof(Int64)
                  else
-                   raise "not a built-in type #{type}. Manual size calculation required"
+                   # fallback to using dimensions
+                   return self.reduce { |acc, i| acc * i }
                  end
     bytesize // klass_size
   end
