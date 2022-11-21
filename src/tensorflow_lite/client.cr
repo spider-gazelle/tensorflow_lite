@@ -1,8 +1,10 @@
 require "../tensorflow_lite"
 
 class TensorflowLite::Client
-  def initialize(model : Bytes | Path | Model, threads : Int? = nil, &on_error : String -> Nil)
+  def initialize(model : Bytes | Path | Model | String, threads : Int? = nil, &on_error : String -> Nil)
     @model = case model
+             in String
+               Model.new(Path.new(model))
              in Bytes, Path
                Model.new(model)
              in Model
@@ -17,7 +19,7 @@ class TensorflowLite::Client
     @interpreter = Interpreter.new(@model, @options)
   end
 
-  def self.new(model : Bytes | Path | Model, threads : Int? = nil)
+  def self.new(model : Bytes | Path | Model | String, threads : Int? = nil)
     Client.new(model, threads) { |error_message| Log.warn { error_message } }
   end
 

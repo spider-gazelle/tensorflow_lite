@@ -27,6 +27,10 @@ A library for running TF
 require "tensorflow_lite"
 ```
 
+## Future
+
+Planning on including a metadata extraction tool for tensorflow models
+
 ## Development
 
 To update tensorflow lite bindings `./generate_bindings.sh` the resulting file needs one modification currently:

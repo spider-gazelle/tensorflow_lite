@@ -31,6 +31,7 @@ module TensorflowLite
           # configure inputs
           input_tensor = interpreter.input_tensor(0)
           input_tensor.raw_data.bytesize.should eq input_tensor.bytesize
+          input_tensor.size.should eq 2
 
           floats = input_tensor.as_f32
           floats[0], floats[1] = inputs
