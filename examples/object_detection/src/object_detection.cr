@@ -39,6 +39,7 @@ client.outputs.each do |tensor|
   puts "\tdimensions: #{tensor.map(&.to_s).join("x")}"
 end
 
+label_path = "./assets/labelmap.txt"
 image_path = "./assets/input.jpg"
 output_image = "output"
 
@@ -47,6 +48,10 @@ OptionParser.parse(ARGV.dup) do |parser|
 
   parser.on("-i IMAGE", "--image=IMAGE", "The image we want to detect objects in") do |img|
     image_path = img.strip if img.presence
+  end
+
+  parser.on("-l LABELS", "--labels=LABELS", "The list of labels") do |img|
+    label_path = img.strip if img.presence
   end
 
   parser.on("-o OUTPUT", "--output=OUTPUT", "Name of the file we want to write the detections to") do |img|
@@ -62,6 +67,16 @@ end
 unless File.exists?(image_path)
   puts "input image file not found"
   exit 1
+end
+
+# loading the labels
+labels = {} of Int32 => String
+if File.exists?(label_path)
+  idx = 0
+  File.each_line(label_path) do |line|
+    labels[idx] = line
+    idx += 1
+  end
 end
 
 # File type detection
@@ -162,15 +177,15 @@ end
 # run the detection
 client.invoke!
 
-record Detection, top : Float32, left : Float32, bottom : Float32, right : Float32, classification : Int32, score : Float32 do
+record Detection, top : Float32, left : Float32, bottom : Float32, right : Float32, classification : Int32, name : String?, score : Float32 do
   def lines(height, width)
     height = height.to_f32
     width = width.to_f32
 
-    top_px = top * height
-    bottom_px = bottom * height
-    left_px = left * width
-    right_px = right * width
+    top_px = (top * height).round.to_i
+    bottom_px = (bottom * height).round.to_i
+    left_px = (left * width).round.to_i
+    right_px = (right * width).round.to_i
 
     {
       # top line
@@ -180,7 +195,7 @@ record Detection, top : Float32, left : Float32, bottom : Float32, right : Float
       # right line
       {right_px, top_px, right_px, bottom_px},
       # bottom line
-      {left_px, bottom_px, right_px, bottom_px}
+      {left_px, bottom_px, right_px, bottom_px},
     }
   end
 end
@@ -197,12 +212,14 @@ puts "\ndetected objects: #{detection_count}"
 
 detections = (0...detection_count).map do |index|
   idx = index * 4
+  klass = features[index].to_i
   Detection.new(
     top: boxes[idx],
     left: boxes[idx + 1],
     bottom: boxes[idx + 2],
     right: boxes[idx + 3],
-    classification: features[index].to_i,
+    classification: klass,
+    name: labels[klass]?,
     score: scores[index]
   )
 end
@@ -211,12 +228,19 @@ pp detections
 
 puts "\nWriting output file #{output_image}.png"
 
+font = PCFParser::Font.from_file("./assets/font.pcf")
+
 # Draw the detections onto the original image
 detections.each do |detection|
   next if detection.score < 0.4_f32
 
-  detection.lines(original_cropped.width, original_cropped.height).each do |line|
+  lines = detection.lines(original_cropped.width, original_cropped.height)
+  lines.each do |line|
     original_cropped.line(*line)
+  end
+
+  if label = labels[detection.classification]?
+    original_cropped.text(lines[0][0], lines[0][1], label, font)
   end
 end
 
