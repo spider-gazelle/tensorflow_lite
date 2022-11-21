@@ -61,8 +61,8 @@ struct TensorflowLite::Tensor
     raw_data
   end
 
-  # attempts to calculate the number on inputs based on the type
-  def number_of_inputs
+  # attempts to calculate the number on inputs/outputs based on the type
+  def io_count
     klass_size = case type
                  when .float32?
                    sizeof(Float32)
