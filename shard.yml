@@ -9,3 +9,6 @@ authors:
   - Stephen von Takach <steve@place.tech>
 
 license: MIT
+
+scripts:
+  postinstall: ./build_tensorflowlite.sh IS_LIB

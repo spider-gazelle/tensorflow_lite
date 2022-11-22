@@ -1,4 +1,4 @@
-@[Link("tensorflowlite_c")]
+@[Link("tensorflowlite_c", ldflags: "-L#{__DIR__}/../../ext/ -Wl,-rpath='$ORIGIN'")]
 lib LibTensorflowLite
   BuiltinAdd                          =   0_i64
   BuiltinAveragePool2d                =   1_i64

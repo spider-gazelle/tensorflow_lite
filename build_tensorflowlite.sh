@@ -1,5 +1,14 @@
 #!/bin/sh
 
+SHARDS_INSTALL=IS_LIB
+IS_LOCAL=./ext/libtensorflowlite_c.so
+if test -f "$IS_LOCAL"; then
+  echo "--"
+  echo "tensorflow lite library installed, skipping installation"
+  echo "--"
+  exit 0
+fi
+
 echo "--"
 echo "preparing... (requires build-essential, cmake, python3 and bazel)"
 echo "--"
@@ -43,14 +52,34 @@ else
   fi
 fi
 
-echo "copying library into place... sudo password required"
+echo "copying library into place.."
 echo "--"
 
-sudo mv ./libtensorflowlite_c.so /usr/local/lib/
+# we'll put the lib into a few different places so it'll run when using crystal normally
+
+# Temp location crystal runs applications from
+mkdir -p ~/.cache/crystal/
+cp ./libtensorflowlite_c.so ~/.cache/crystal/
+
+# A location to use when building
+mkdir -p ../ext
+cp ./libtensorflowlite_c.so ../ext/
+
+# other locations you might be running the application from
+# check if being installed as a lib
+if [ "$1" = "$SHARDS_INSTALL" ]; then
+  echo "copying into parent directory.."
+  mkdir -p ../../../bin
+  cp ./libtensorflowlite_c.so ../../../bin/
+  cp ./libtensorflowlite_c.so ../../../
+else
+  echo "run manually, assuming library development mode"
+fi
+
 cd ..
 
 rm -rf ./tensorflow
 rm -rf ./tflite_build
 
 echo "--"
-echo "Done. Re-run on failure, typically works on second attempt"
+echo "Done"

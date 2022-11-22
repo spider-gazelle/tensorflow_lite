@@ -1,8 +1,10 @@
 /docs/
 /lib/
 /bin/
+/ext/
 /.shards/
 *.dwarf
+*.so
 crystal_lib/
 tensorflow/
 tflite_build/
