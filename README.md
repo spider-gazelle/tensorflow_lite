@@ -4,14 +4,7 @@ A library for running TF
 
 ## Installation
 
-1. Requires [libtensorflow](https://www.tensorflow.org/install/lang_c) to be installed
-   * there is a [guide to building it](https://www.tensorflow.org/lite/guide/build_cmake)
-   * you can use `./build_tensorflowlite.sh` to automate this
-   * then requires `export LD_LIBRARY_PATH=/usr/local/lib` to run
-   * test if installed successfully `crystal ./src/tensorflow_lite.cr`
-      * this will output `Launching with tensorflow lite vx.x.x`
-
-2. Add the dependency to your `shard.yml`:
+1. Add the dependency to your `shard.yml`:
 
    ```yaml
    dependencies:
@@ -19,7 +12,7 @@ A library for running TF
        github: spider-gazelle/tensorflow_lite
    ```
 
-3. Run `shards install`
+2. Run `shards install`
 
 ## Usage
 
@@ -36,6 +29,19 @@ To update tensorflow lite bindings `./generate_bindings.sh` the resulting file n
 * Replace all instances of `LibC::Bool` with `LibC::SizeT`
 
 there is an issue tracking [this problem](https://github.com/crystal-lang/crystal_lib/issues/78).
+
+### lib installation
+
+Requires [libtensorflow](https://www.tensorflow.org/install/lang_c) to be installed, this is handled automatically by `./build_tensorflowlite.sh`
+
+* there is a [guide to building it](https://www.tensorflow.org/lite/guide/build_cmake)
+* you can use `./build_tensorflowlite.sh` to automate this
+* then requires `export LD_LIBRARY_PATH=/usr/local/lib` to run
+* test if installed successfully `crystal ./src/tensorflow_lite.cr`
+  * this will output `Launching with tensorflow lite vx.x.x`
+
+NOTE:: the lib is installed for local use via a postinstall script.
+Make sure to distribute `libtensorflowlite_c.so` with your production app
 
 ## Contributing
 
