@@ -11,4 +11,4 @@ authors:
 license: MIT
 
 scripts:
-  postinstall: build_tensorflowlite.sh IS_LIB
+  postinstall: /bin/sh ./build_tensorflowlite.sh IS_LIB
