@@ -25,7 +25,7 @@ jobs:
     - name: Install build deps
       run: |
         apk add --update --no-cache python3
-        apk add --update --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community bazel4
+        apk add --update --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing bazel4
     - name: Install dependencies
       run: shards install --ignore-crystal-version
     - name: Install Tensor Flow
