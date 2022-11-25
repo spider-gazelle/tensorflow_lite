@@ -190,7 +190,11 @@ lib LibTensorflowLite
   fun schema_version = TfLiteSchemaVersion : LibC::Int
   fun model_create = TfLiteModelCreate(model_data : Void*, model_size : LibC::SizeT) : Model
   type Model = Void*
+  fun model_create_with_error_reporter = TfLiteModelCreateWithErrorReporter(model_data : Void*, model_size : LibC::SizeT, reporter : (Void*, LibC::Char*, VaList -> Void), user_data : Void*) : Model
+  alias X__GnucVaList = LibC::VaList
+  alias VaList = X__GnucVaList
   fun model_create_from_file = TfLiteModelCreateFromFile(model_path : LibC::Char*) : Model
+  fun model_create_from_file_with_error_reporter = TfLiteModelCreateFromFileWithErrorReporter(model_path : LibC::Char*, reporter : (Void*, LibC::Char*, VaList -> Void), user_data : Void*) : Model
   fun model_delete = TfLiteModelDelete(model : Model)
   fun interpreter_options_create = TfLiteInterpreterOptionsCreate : InterpreterOptions
   type InterpreterOptions = Void*
@@ -201,11 +205,9 @@ lib LibTensorflowLite
   fun interpreter_options_add_opaque_delegate = TfLiteInterpreterOptionsAddOpaqueDelegate(options : InterpreterOptions, opaque_delegate : OpaqueDelegateStruct)
   type OpaqueDelegateStruct = Void*
   fun interpreter_options_set_error_reporter = TfLiteInterpreterOptionsSetErrorReporter(options : InterpreterOptions, reporter : (Void*, LibC::Char*, VaList -> Void), user_data : Void*)
-  alias X__GnucVaList = LibC::VaList
-  alias VaList = X__GnucVaList
   fun interpreter_options_add_registration_external = TfLiteInterpreterOptionsAddRegistrationExternal(options : InterpreterOptions, registration : RegistrationExternal)
   type RegistrationExternal = Void*
-  fun interpreter_options_enable_cancellation = TfLiteInterpreterOptionsEnableCancellation(options : InterpreterOptions, enable : LibC::SizeT) : Status
+  fun interpreter_options_enable_cancellation = TfLiteInterpreterOptionsEnableCancellation(options : InterpreterOptions, enable : LibC::Int) : Status
   enum Status
     Ok                     = 0
     Error                  = 1
@@ -425,6 +427,7 @@ lib LibTensorflowLite
     BuiltinSign                         = 158
   end
   fun registration_external_get_built_in_code = TfLiteRegistrationExternalGetBuiltInCode(registration : RegistrationExternal) : BuiltinOperator
+  fun registration_external_get_custom_name = TfLiteRegistrationExternalGetCustomName(registration : RegistrationExternal) : LibC::Char*
   fun registration_external_delete = TfLiteRegistrationExternalDelete(registration : RegistrationExternal)
   fun registration_external_set_init = TfLiteRegistrationExternalSetInit(registration : RegistrationExternal, init : (OpaqueContext, LibC::Char*, LibC::SizeT -> Void*))
   type OpaqueContext = Void*

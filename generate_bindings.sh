@@ -14,12 +14,12 @@ echo "--"
 
 # clone the required repositories
 git clone --depth 1 https://github.com/tensorflow/tensorflow
-git clone https://github.com/crystal-lang/crystal_lib
+git clone --depth 1 https://github.com/crystal-lang/crystal_lib
 
 # build the binding generator
 cd crystal_lib
-shards install
-crystal build src/main.cr
+shards check || shards install
+test -f "./main" || crystal build src/main.cr
 
 echo "--"
 echo "generating bindings..."
@@ -28,8 +28,9 @@ echo "--"
 # this might require you to have installed bazel
 # and have run `./configure` from the `tensorflow/tensorflow` directory
 cd ../tensorflow
-../crystal_lib/main "../src/deadcatting/bindings_generator.cr" | grep -vE 'alias(.+)Void$' > "../src/deadcatting/lib_tensorflowlite.cr"
+../crystal_lib/main "../src/tensorflow_lite/bindings_generator.cr" | grep -vE 'alias(.+)Void$' > "../src/tensorflow_lite/lib_tensorflowlite.cr"
 cd ..
+crystal tool format
 
 echo "--"
 echo "Cleaning up..."

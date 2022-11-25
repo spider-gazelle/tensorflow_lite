@@ -24,11 +24,7 @@ you can use the example metadata extractor to obtain the metadata for TF Lite mo
 
 ## Development
 
-To update tensorflow lite bindings `./generate_bindings.sh` the resulting file needs one modification currently:
-
-* Replace all instances of `LibC::Bool` with `LibC::SizeT`
-
-there is an issue tracking [this problem](https://github.com/crystal-lang/crystal_lib/issues/78).
+To update tensorflow lite bindings `./generate_bindings.sh`
 
 ### lib installation
 
