@@ -2,8 +2,9 @@
 
 A library for running TF Lite models
 
-* once you've trained a model in TensorFlow you can convert it to [TF Lite](https://www.tensorflow.org/lite/models/convert) for production use
+* once you've trained a model in TensorFlow you can convert it to [TF Lite](https://www.tensorflow.org/lite/models/convert/convert_models#command_line_tool_) for production use
 * inspect the TF Lite model using [netron.app](https://netron.app/)
+* some [good TF models](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md) for object detection (need conversion)
 
 ## Installation
 
