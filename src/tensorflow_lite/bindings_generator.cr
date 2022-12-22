@@ -11,6 +11,4 @@
 )]
 @[Link("tensorflowlite_c", ldflags: "-L#{__DIR__}/../../ext/ -Wl,-rpath='$ORIGIN'")]
 lib LibTensorflowLite
-  # NOTE:: need to manually update LibC::Bool to LibC::SizeT
-  # as LibC::Bool does not exist
 end

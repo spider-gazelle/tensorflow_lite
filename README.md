@@ -1,6 +1,9 @@
 # tensorflow_lite
 
-A library for running TF
+A library for running TF Lite models
+
+* once you've trained a model in TensorFlow you can convert it to [TF Lite](https://www.tensorflow.org/lite/models/convert) for production use
+* inspect the TF Lite model using [netron.app](https://netron.app/)
 
 ## Installation
 
