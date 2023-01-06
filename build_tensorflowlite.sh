@@ -10,14 +10,11 @@ if test -f "$IS_LOCAL"; then
 fi
 
 echo "--"
-echo "preparing... (requires build-essential, cmake, python3 and bazel)"
+echo "preparing... (requires build-essential and cmake)"
 echo "--"
 
 # clone the required repositories
 git clone --depth 1 https://github.com/tensorflow/tensorflow
-cd tensorflow
-bazel sync
-cd ..
 
 echo "--"
 echo "configuring..."
