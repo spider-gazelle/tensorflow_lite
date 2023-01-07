@@ -204,7 +204,7 @@ lib LibTensorflowLite
   type Delegate = Void*
   fun interpreter_options_add_opaque_delegate = TfLiteInterpreterOptionsAddOpaqueDelegate(options : InterpreterOptions, opaque_delegate : OpaqueDelegateStruct)
   type OpaqueDelegateStruct = Void*
-  fun interpreter_options_set_error_reporter = TfLiteInterpreterOptionsSetErrorReporter(options : InterpreterOptions, reporter : (Void*, LibC::Char*, VaList -> Void), user_data : Void*)
+  fun interpreter_options_set_error_reporter = TfLiteInterpreterOptionsSetErrorReporter(options : InterpreterOptions, reporter : (Void*, LibC::Char*, Void* -> Void), user_data : Void*)
   fun interpreter_options_add_registration_external = TfLiteInterpreterOptionsAddRegistrationExternal(options : InterpreterOptions, registration : RegistrationExternal)
   type RegistrationExternal = Void*
   fun interpreter_options_enable_cancellation = TfLiteInterpreterOptionsEnableCancellation(options : InterpreterOptions, enable : LibC::Int) : Status

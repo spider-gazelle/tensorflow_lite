@@ -22,13 +22,13 @@ echo "--"
 
 mkdir tflite_build
 cd tflite_build
-cmake ../tensorflow/tensorflow/lite/c
+cmake ../tensorflow/tensorflow/lite/c -DTFLITE_ENABLE_GPU=ON
 
 echo "--"
 echo "building..."
 echo "--"
 
-cmake --build . -j
+cmake --build . -j2 || true
 
 FILE=./libtensorflowlite_c.so
 if test -f "$FILE"; then
@@ -36,7 +36,7 @@ if test -f "$FILE"; then
   echo "build success!"
 else
   echo "build failed, retrying..."
-  cmake --build . -j
+  cmake --build . -j1
 
   if test -f "$FILE"; then
     echo "--"
