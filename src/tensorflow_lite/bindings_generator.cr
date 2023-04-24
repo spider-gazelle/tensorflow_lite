@@ -2,6 +2,7 @@
   "tensorflow/lite/builtin_ops.h",
   "tensorflow/lite/core/c/c_api_types.h",
   "tensorflow/lite/core/c/c_api.h",
+  "tensorflow/lite/core/c/c_api_experimental.h",
   flags: "
     -I/{tensorflow_dir}/tensorflow/
     -I/{tensorflow_dir}/tensorflow/bazel-genfiles

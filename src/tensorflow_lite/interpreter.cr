@@ -52,6 +52,11 @@ class TensorflowLite::Interpreter
   end
 
   alias Status = LibTensorflowLite::Status
+  alias Delegate = LibTensorflowLite::Delegate
+
+  def modify_graph_with_delegate(delegate : Delegate) : Status
+    LibTensorflowLite.interpreter_modify_graph_with_delegate(tf_interpreter_ptr, delegate)
+  end
 
   def invoke : Status
     LibTensorflowLite.interpreter_invoke(tf_interpreter_ptr)

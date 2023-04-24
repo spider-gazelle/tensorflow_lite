@@ -42,4 +42,11 @@ class TensorflowLite::InterpreterOptions
       nil
     }, callback_ptr)
   end
+
+  alias Delegate = LibTensorflowLite::OpaqueDelegate
+
+  def add_delegate(delegate : Delegate)
+    LibTensorflowLite.interpreter_options_add_delegate(tf_options_ptr, delegate)
+    self
+  end
 end
