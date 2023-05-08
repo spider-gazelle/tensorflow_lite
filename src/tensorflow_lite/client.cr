@@ -3,7 +3,7 @@ require "../tensorflow_lite"
 class TensorflowLite::Client
   include Indexable(Tensor)
 
-  def initialize(model : Bytes | Path | Model | String, threads : Int? = nil, &on_error : String -> Nil)
+  def initialize(model : Bytes | Path | Model | String, delegate : Delegate? = nil, threads : Int? = nil, &on_error : String -> Nil)
     @model = case model
              in String
                Model.new(Path.new(model))
@@ -17,6 +17,9 @@ class TensorflowLite::Client
     @options.on_error(&on_error)
     if threads
       @options.num_threads(threads)
+    end
+    if delegate
+      @options.add_delegate delegate
     end
     @interpreter = Interpreter.new(@model, @options)
   end
