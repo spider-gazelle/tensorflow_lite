@@ -20,11 +20,41 @@ A library for running TF Lite models
 
 ## Usage
 
+See the specs for basic usage or have a look at [imagine](https://github.com/stakach/imagine/blob/master/src/imagine/models/example_object_detection.cr)
+
 ```crystal
 require "tensorflow_lite"
 ```
 
 you can use the example metadata extractor to obtain the metadata for TF Lite models downloaded from [tfhub.dev](https://tfhub.dev/s?deployment-format=lite)
+
+### With and EdgeTPU
+
+Such as a Coral USB device
+
+```crystal
+require "tensorflow_lite/edge_tpu"
+```
+
+To install the edge tpu delegate:
+
+```bash
+echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+sudo apt update
+sudo apt install libedgetpu-dev
+```
+
+To install the [Coral USB drivers](https://coral.ai/docs/accelerator/get-started/#requirements)
+
+```bash
+sudo apt install libedgetpu1-std
+# OR for max frequency
+sudo apt install libedgetpu1-max
+
+# unplug and re-plug the coral or run this
+sudo systemctl restart udev
+```
 
 ## Development
 

@@ -1,6 +1,7 @@
 require "box"
 require "va_list"
 require "./lib_tensorflowlite"
+require "./delegate"
 
 lib C
   fun vasprintf(strp : LibC::Char**, format : LibC::Char*, ap : Void*) : LibC::Int
@@ -43,9 +44,11 @@ class TensorflowLite::InterpreterOptions
     }, callback_ptr)
   end
 
-  alias Delegate = LibTensorflowLite::OpaqueDelegate
+  # ensure the delegate isn't GC'd
+  @delegates : Array(Delegate) = [] of Delegate
 
   def add_delegate(delegate : Delegate)
+    @delegates << delegate
     LibTensorflowLite.interpreter_options_add_delegate(tf_options_ptr, delegate)
     self
   end
