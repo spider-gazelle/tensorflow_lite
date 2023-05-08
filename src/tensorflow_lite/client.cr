@@ -24,8 +24,8 @@ class TensorflowLite::Client
     @interpreter = Interpreter.new(@model, @options)
   end
 
-  def self.new(model : Bytes | Path | Model | String, threads : Int? = nil)
-    Client.new(model, threads) { |error_message| Log.warn { error_message } }
+  def self.new(model : Bytes | Path | Model | String, delegate : Delegate? = nil, threads : Int? = nil)
+    Client.new(model, delegate, threads) { |error_message| Log.warn { error_message } }
   end
 
   getter model : Model
