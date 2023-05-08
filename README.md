@@ -39,8 +39,13 @@ require "tensorflow_lite/edge_tpu"
 To install the edge tpu delegate:
 
 ```bash
-echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
-curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+# Add Google Cloud public key
+RUN wget -q -O - https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor > /etc/apt/trusted.gpg.d/coral-edgetpu.gpg
+
+# Add Coral packages repository
+RUN echo "deb [signed-by=/etc/apt/trusted.gpg.d/coral-edgetpu.gpg] https://packages.cloud.google.com/apt coral-edgetpu-stable main" | tee /etc/apt/sources.list.d/coral-edgetpu.list
+
+# install the lib
 sudo apt update
 sudo apt install libedgetpu-dev
 ```
@@ -55,6 +60,15 @@ sudo apt install libedgetpu1-max
 # unplug and re-plug the coral or run this
 sudo systemctl restart udev
 ```
+
+NOTE:: when using a coral and running `lsusb` you need to look for either:
+
+* Global Unichip Corp.
+* Google Inc.
+
+after running something on the chip it will [change identity to Google Inc.](https://www.reddit.com/r/Proxmox/comments/nmsknx/proxmox_vm_ubuntu_2004_connect_google_coral_usb/)
+
+And you need to include the Google identity version in any docker files.
 
 ## Development
 
