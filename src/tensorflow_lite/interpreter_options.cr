@@ -4,7 +4,7 @@ require "./lib_tensorflowlite"
 require "./delegate"
 
 lib C
-  fun vasprintf(strp : LibC::Char**, format : LibC::Char*, ap : Void*) : LibC::Int
+  fun vasprintf(strp : LibC::Char**, format : LibC::Char*, ap : LibC::VaList) : LibC::Int
 end
 
 class TensorflowLite::InterpreterOptions
