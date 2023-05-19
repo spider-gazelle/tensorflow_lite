@@ -1,6 +1,7 @@
 require "../edge_tpu"
 require "./device"
 
+# :nodoc:
 class TensorflowLite::EdgeTPU::Devices
   def initialize
     num_devices = LibC::SizeT.new(0)

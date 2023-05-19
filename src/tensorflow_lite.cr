@@ -1,13 +1,18 @@
 require "log"
 require "./tensorflow_lite/lib_tensorflowlite"
 
+# TensorFlow Lite is a set of tools provided by Google to run TensorFlow models on mobile, embedded, and IoT devices.
+#
+# It enables on-device machine learning inference with low latency and a small binary size, which are crucial requirements for these types of devices.
 module TensorflowLite
+  # :nodoc:
   Log = ::Log.for("tensorflow_lite")
 
   {% begin %}
     VERSION = {{ `shards version "#{__DIR__}"`.chomp.stringify.downcase }}
   {% end %}
 
+  # the version of the tensorflow lite library in use
   def self.version
     String.new(LibTensorflowLite.version)
   end
@@ -17,11 +22,6 @@ module TensorflowLite
   end
 
   Log.info { "Launching with tensorflow lite v#{TensorflowLite.version}" }
-
-  # https://www.tensorflow.org/lite/examples/object_detection/overview
-  # need to do a bunch of pre-processing: https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/android
-  # flattened buffer, possibly quantized
-  # example app: https://github.com/mattn/go-tflite
 end
 
 require "./tensorflow_lite/model"

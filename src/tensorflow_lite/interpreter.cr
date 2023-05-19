@@ -1,14 +1,17 @@
 require "./model"
 require "./interpreter_options"
 
+# The Interpreter takes a model, loads it, and allows you to run (or "interpret") the model, i.e., to use it to make predictions based on input data.
 class TensorflowLite::Interpreter
+  # raised if an invokation of a model fails
   class InvokeError < RuntimeError
   end
 
+  # provide the model and options required for inference
   def initialize(@model : Model, @options : InterpreterOptions)
-    tf_interpreter_ptr = LibTensorflowLite.interpreter_create(model.tf_model_ptr, options.tf_options_ptr)
+    tf_interpreter_ptr = LibTensorflowLite.interpreter_create(model, options)
     raise "failed to create tensorflow interpreter" if tf_interpreter_ptr.null?
-    @tf_interpreter_ptr = tf_interpreter_ptr
+    @to_unsafe = tf_interpreter_ptr
 
     begin
       allocate_tensors
@@ -19,49 +22,66 @@ class TensorflowLite::Interpreter
     end
   end
 
-  getter tf_interpreter_ptr : LibTensorflowLite::Interpreter
+  # :nodoc:
+  getter to_unsafe : LibTensorflowLite::Interpreter
 
-  # mostly here to ensure these are cleaned up after this class
+  # the model this interpreter is running
   getter model : Model
+
+  # the options used to initialize this interpreter
   getter options : InterpreterOptions
 
+  # :nodoc:
   def finalize
-    LibTensorflowLite.interpreter_delete(@tf_interpreter_ptr)
+    LibTensorflowLite.interpreter_delete(@to_unsafe)
   end
 
   protected def allocate_tensors
-    LibTensorflowLite.interpreter_allocate_tensors(@tf_interpreter_ptr)
+    LibTensorflowLite.interpreter_allocate_tensors(self)
   end
 
+  # the number of input tensors that are used to feed data into the model
   getter input_tensor_count : Int32 do
-    LibTensorflowLite.interpreter_get_input_tensor_count(@tf_interpreter_ptr).to_i
+    LibTensorflowLite.interpreter_get_input_tensor_count(self).to_i
   end
 
+  # returns the requested input tensor for manipulation and loading of input data
   def input_tensor(index : Int) : Tensor
     raise IndexError.new if index >= input_tensor_count || index < 0
-    Tensor.new LibTensorflowLite.interpreter_get_input_tensor(@tf_interpreter_ptr, index.to_i32)
+    Tensor.new LibTensorflowLite.interpreter_get_input_tensor(self, index.to_i32)
   end
 
+  # the number of output tensors, used to obtain the results of an invokation
   getter output_tensor_count : Int32 do
-    LibTensorflowLite.interpreter_get_output_tensor_count(@tf_interpreter_ptr).to_i
+    LibTensorflowLite.interpreter_get_output_tensor_count(self).to_i
   end
 
+  # returns the requested output tensor for results extraction
   def output_tensor(index : Int) : Tensor
     raise IndexError.new if index >= output_tensor_count || index < 0
-    Tensor.new LibTensorflowLite.interpreter_get_output_tensor(@tf_interpreter_ptr, index.to_i32)
+    Tensor.new LibTensorflowLite.interpreter_get_output_tensor(self, index.to_i32)
   end
 
   alias Status = LibTensorflowLite::Status
+
+  # :nodoc:
   alias Delegate = LibTensorflowLite::Delegate
 
+  # :nodoc:
+  # provides a method to add a delegate after initialization.
+  # Recommended that delegates are configured via `InterpreterOptions`
   def modify_graph_with_delegate(delegate : Delegate) : Status
-    LibTensorflowLite.interpreter_modify_graph_with_delegate(tf_interpreter_ptr, delegate)
+    LibTensorflowLite.interpreter_modify_graph_with_delegate(self, delegate)
   end
 
+  # runs the model and returns the result status
+  #
+  # NOTE: the results are stored in the output tensors
   def invoke : Status
-    LibTensorflowLite.interpreter_invoke(tf_interpreter_ptr)
+    LibTensorflowLite.interpreter_invoke(self)
   end
 
+  # run the model, processing the input tensors and updating the output tensors
   def invoke!
     result = invoke
     raise InvokeError.new("invoke failed with #{result}") unless result.ok?

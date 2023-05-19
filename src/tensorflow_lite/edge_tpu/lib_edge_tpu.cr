@@ -1,5 +1,6 @@
 require "../lib_tensorflowlite"
 
+# :nodoc:
 @[Link("edgetpu")]
 lib LibEdgeTPU
   struct Device

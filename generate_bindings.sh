@@ -28,6 +28,7 @@ echo "--"
 # this might require you to have installed bazel
 # and have run `./configure` from the `tensorflow/tensorflow` directory
 cd ../tensorflow
+cp ../bindings/bindings_generator.cr ../src/tensorflow_lite/bindings_generator.cr
 ../crystal_lib/main "../src/tensorflow_lite/bindings_generator.cr" | grep -vE 'alias(.+)Void$' > "../src/tensorflow_lite/lib_tensorflowlite.cr"
 cd ..
 crystal tool format
