@@ -6,6 +6,8 @@ A library for running TF Lite models
 * inspect the TF Lite model using [netron.app](https://netron.app/)
 * some [good TF models](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md) for object detection (need conversion)
 
+Also see the [project documentation](https://spider-gazelle.github.io/tensorflow_lite/TensorflowLite/Client.html)
+
 ## Installation
 
 1. Add the dependency to your `shard.yml`:
