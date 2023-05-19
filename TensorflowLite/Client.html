@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 1.7.3">
+<meta name="crystal_docs.project_version" content="main">
+<meta name="crystal_docs.project_name" content="tensorflow_lite">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="tensorflow_lite">
+  <title>TensorflowLite::Client - tensorflow_lite main</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          tensorflow_lite
+        </a>
+      </h1>
+
+      <span class="project-version">
+        main
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="tensorflow_lite/TensorflowLite" data-name="tensorflowlite">
+      <a href="../TensorflowLite.html">TensorflowLite</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="tensorflow_lite/TensorflowLite/Client" data-name="tensorflowlite::client">
+      <a href="../TensorflowLite/Client.html">Client</a>
+      
+    </li>
+  
+  <li class=" " data-id="tensorflow_lite/TensorflowLite/Delegate" data-name="tensorflowlite::delegate">
+      <a href="../TensorflowLite/Delegate.html">Delegate</a>
+      
+    </li>
+  
+  <li class="parent " data-id="tensorflow_lite/TensorflowLite/EdgeTPU" data-name="tensorflowlite::edgetpu">
+      <a href="../TensorflowLite/EdgeTPU.html">EdgeTPU</a>
+      
+        <ul>
+  
+  <li class=" " data-id="tensorflow_lite/TensorflowLite/EdgeTPU/Delegate" data-name="tensorflowlite::edgetpu::delegate">
+      <a href="../TensorflowLite/EdgeTPU/Delegate.html">Delegate</a>
+      
+    </li>
+  
+  <li class="parent " data-id="tensorflow_lite/TensorflowLite/EdgeTPU/Device" data-name="tensorflowlite::edgetpu::device">
+      <a href="../TensorflowLite/EdgeTPU/Device.html">Device</a>
+      
+        <ul>
+  
+  <li class=" " data-id="tensorflow_lite/TensorflowLite/EdgeTPU/Device/Type" data-name="tensorflowlite::edgetpu::device::type">
+      <a href="../TensorflowLite/EdgeTPU/Device/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="tensorflow_lite/TensorflowLite/Interpreter" data-name="tensorflowlite::interpreter">
+      <a href="../TensorflowLite/Interpreter.html">Interpreter</a>
+      
+        <ul>
+  
+  <li class=" " data-id="tensorflow_lite/TensorflowLite/Interpreter/InvokeError" data-name="tensorflowlite::interpreter::invokeerror">
+      <a href="../TensorflowLite/Interpreter/InvokeError.html">InvokeError</a>
+      
+    </li>
+  
+  <li class=" " data-id="tensorflow_lite/TensorflowLite/Interpreter/Status" data-name="tensorflowlite::interpreter::status">
+      <a href="../TensorflowLite/Interpreter/Status.html">Status</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="tensorflow_lite/TensorflowLite/InterpreterOptions" data-name="tensorflowlite::interpreteroptions">
+      <a href="../TensorflowLite/InterpreterOptions.html">InterpreterOptions</a>
+      
+    </li>
+  
+  <li class=" " data-id="tensorflow_lite/TensorflowLite/Model" data-name="tensorflowlite::model">
+      <a href="../TensorflowLite/Model.html">Model</a>
+      
+    </li>
+  
+  <li class="parent " data-id="tensorflow_lite/TensorflowLite/Tensor" data-name="tensorflowlite::tensor">
+      <a href="../TensorflowLite/Tensor.html">Tensor</a>
+      
+        <ul>
+  
+  <li class=" " data-id="tensorflow_lite/TensorflowLite/Tensor/Type" data-name="tensorflowlite::tensor::type">
+      <a href="../TensorflowLite/Tensor/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> TensorflowLite::Client
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../TensorflowLite/Client.html">TensorflowLite::Client</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>provides a simplified way to load and manipulate the tensorflow interpreter</p>
+<p>the indexable module provides simplified access to the input tensors</p>
+
+
+
+
+
+  <h2>
+    <a id="included-modules" class="anchor" href="#included-modules">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Included Modules
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type">Indexable(<a href="../TensorflowLite/Tensor.html">TensorflowLite::Tensor</a>)</li>
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L6" target="_blank">
+        tensorflow_lite/client.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28model%3ABytes%7CPath%7CModel%7CString%2Cdelegate%3ADelegate%7CNil%3Dnil%2Cthreads%3AInt%7CNil%3Dnil%2C%26on_error%3AString-%3ENil%29-class-method" class="signature"><strong>.new</strong>(model : Bytes | Path | Model | String, delegate : Delegate | Nil = <span class="n">nil</span>, threads : Int | Nil = <span class="n">nil</span>, &on_error : String -> Nil)</a>
+        
+          <div class="summary"><p>Configures the tensorflow interpreter with the options provided</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28model%3ABytes%7CPath%7CModel%7CString%2Cdelegate%3ADelegate%7CNil%3Dnil%2Cthreads%3AInt%7CNil%3Dnil%29-class-method" class="signature"><strong>.new</strong>(model : Bytes | Path | Model | String, delegate : Delegate | Nil = <span class="n">nil</span>, threads : Int | Nil = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Configures the tensorflow interpreter with the options provided</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#input_tensor%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#input_tensor</strong>(*args, **options)</a>
+        
+          <div class="summary"><p>input tensor details for manipulation and loading of input data</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#input_tensor%28%2Aargs%2C%2A%2Aoptions%2C%26%29-instance-method" class="signature"><strong>#input_tensor</strong>(*args, **options, &)</a>
+        
+          <div class="summary"><p>input tensor details for manipulation and loading of input data</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#input_tensor_count%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#input_tensor_count</strong>(*args, **options)</a>
+        
+          <div class="summary"><p>input tensor details for manipulation and loading of input data</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#input_tensor_count%28%2Aargs%2C%2A%2Aoptions%2C%26%29-instance-method" class="signature"><strong>#input_tensor_count</strong>(*args, **options, &)</a>
+        
+          <div class="summary"><p>input tensor details for manipulation and loading of input data</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#interpreter%3AInterpreter-instance-method" class="signature"><strong>#interpreter</strong> : Interpreter</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#invoke%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#invoke</strong>(*args, **options)</a>
+        
+          <div class="summary"><p>run the model, processing the input tensors and updating the output tensors</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#invoke%28%2Aargs%2C%2A%2Aoptions%2C%26%29-instance-method" class="signature"><strong>#invoke</strong>(*args, **options, &)</a>
+        
+          <div class="summary"><p>run the model, processing the input tensors and updating the output tensors</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#invoke%21%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#invoke!</strong>(*args, **options)</a>
+        
+          <div class="summary"><p>run the model, processing the input tensors and updating the output tensors</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#invoke%21%28%2Aargs%2C%2A%2Aoptions%2C%26%29-instance-method" class="signature"><strong>#invoke!</strong>(*args, **options, &)</a>
+        
+          <div class="summary"><p>run the model, processing the input tensors and updating the output tensors</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#model%3AModel-instance-method" class="signature"><strong>#model</strong> : Model</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#num_threads%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#num_threads</strong>(*args, **options)</a>
+        
+          <div class="summary"><p>This controls the number of CPU threads that the interpreter will use for its computations.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#num_threads%28%2Aargs%2C%2A%2Aoptions%2C%26%29-instance-method" class="signature"><strong>#num_threads</strong>(*args, **options, &)</a>
+        
+          <div class="summary"><p>This controls the number of CPU threads that the interpreter will use for its computations.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_error%28%26callback%3AString-%3ENil%29-instance-method" class="signature"><strong>#on_error</strong>(&callback : String -> Nil)</a>
+        
+          <div class="summary"><p>provide a callback to receive any error messages</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#options%3AInterpreterOptions-instance-method" class="signature"><strong>#options</strong> : InterpreterOptions</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#output%28index%3AInt%3D0%29-instance-method" class="signature"><strong>#output</strong>(index : Int = <span class="n">0</span>)</a>
+        
+          <div class="summary"><p>returns the output tensor at the provided index</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#output_tensor%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#output_tensor</strong>(*args, **options)</a>
+        
+          <div class="summary"><p>output tensors details, used to obtain the results of an invokation</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#output_tensor%28%2Aargs%2C%2A%2Aoptions%2C%26%29-instance-method" class="signature"><strong>#output_tensor</strong>(*args, **options, &)</a>
+        
+          <div class="summary"><p>output tensors details, used to obtain the results of an invokation</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#output_tensor_count%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#output_tensor_count</strong>(*args, **options)</a>
+        
+          <div class="summary"><p>output tensors details, used to obtain the results of an invokation</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#output_tensor_count%28%2Aargs%2C%2A%2Aoptions%2C%26%29-instance-method" class="signature"><strong>#output_tensor_count</strong>(*args, **options, &)</a>
+        
+          <div class="summary"><p>output tensors details, used to obtain the results of an invokation</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#outputs-instance-method" class="signature"><strong>#outputs</strong></a>
+        
+          <div class="summary"><p>returns an array of output tensors</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#size-instance-method" class="signature"><strong>#size</strong></a>
+        
+          <div class="summary"><p>the number of input tensors</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(model:Bytes|Path|Model|String,delegate:Delegate|Nil=nil,threads:Int|Nil=nil,&amp;on_error:String-&gt;Nil)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(model : Bytes | Path | <a href="../TensorflowLite/Model.html">Model</a> | String, delegate : <a href="../TensorflowLite/Delegate.html">Delegate</a> | Nil = <span class="n">nil</span>, threads : Int | Nil = <span class="n">nil</span>, &on_error : String -> Nil)
+
+        <a class="method-permalink" href="#new%28model%3ABytes%7CPath%7CModel%7CString%2Cdelegate%3ADelegate%7CNil%3Dnil%2Cthreads%3AInt%7CNil%3Dnil%2C%26on_error%3AString-%3ENil%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Configures the tensorflow interpreter with the options provided</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(model:Bytes|Path|Model|String,delegate:Delegate|Nil=nil,threads:Int|Nil=nil)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(model : Bytes | Path | <a href="../TensorflowLite/Model.html">Model</a> | String, delegate : <a href="../TensorflowLite/Delegate.html">Delegate</a> | Nil = <span class="n">nil</span>, threads : Int | Nil = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#new%28model%3ABytes%7CPath%7CModel%7CString%2Cdelegate%3ADelegate%7CNil%3Dnil%2Cthreads%3AInt%7CNil%3Dnil%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Configures the tensorflow interpreter with the options provided</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="input_tensor(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>input_tensor</strong>(*args, **options)
+
+        <a class="method-permalink" href="#input_tensor%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>input tensor details for manipulation and loading of input data</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L49" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="input_tensor(*args,**options,&amp;)-instance-method">
+      <div class="signature">
+        
+        def <strong>input_tensor</strong>(*args, **options, &)
+
+        <a class="method-permalink" href="#input_tensor%28%2Aargs%2C%2A%2Aoptions%2C%26%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>input tensor details for manipulation and loading of input data</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L49" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="input_tensor_count(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>input_tensor_count</strong>(*args, **options)
+
+        <a class="method-permalink" href="#input_tensor_count%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>input tensor details for manipulation and loading of input data</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L49" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="input_tensor_count(*args,**options,&amp;)-instance-method">
+      <div class="signature">
+        
+        def <strong>input_tensor_count</strong>(*args, **options, &)
+
+        <a class="method-permalink" href="#input_tensor_count%28%2Aargs%2C%2A%2Aoptions%2C%26%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>input tensor details for manipulation and loading of input data</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L49" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="interpreter:Interpreter-instance-method">
+      <div class="signature">
+        
+        def <strong>interpreter</strong> : <a href="../TensorflowLite/Interpreter.html">Interpreter</a>
+
+        <a class="method-permalink" href="#interpreter%3AInterpreter-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L38" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="invoke(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>invoke</strong>(*args, **options)
+
+        <a class="method-permalink" href="#invoke%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>run the model, processing the input tensors and updating the output tensors</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="invoke(*args,**options,&amp;)-instance-method">
+      <div class="signature">
+        
+        def <strong>invoke</strong>(*args, **options, &)
+
+        <a class="method-permalink" href="#invoke%28%2Aargs%2C%2A%2Aoptions%2C%26%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>run the model, processing the input tensors and updating the output tensors</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="invoke!(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>invoke!</strong>(*args, **options)
+
+        <a class="method-permalink" href="#invoke%21%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>run the model, processing the input tensors and updating the output tensors</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="invoke!(*args,**options,&amp;)-instance-method">
+      <div class="signature">
+        
+        def <strong>invoke!</strong>(*args, **options, &)
+
+        <a class="method-permalink" href="#invoke%21%28%2Aargs%2C%2A%2Aoptions%2C%26%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>run the model, processing the input tensors and updating the output tensors</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="model:Model-instance-method">
+      <div class="signature">
+        
+        def <strong>model</strong> : <a href="../TensorflowLite/Model.html">Model</a>
+
+        <a class="method-permalink" href="#model%3AModel-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L36" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="num_threads(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>num_threads</strong>(*args, **options)
+
+        <a class="method-permalink" href="#num_threads%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>This controls the number of CPU threads that the interpreter will use for its computations.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L41" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="num_threads(*args,**options,&amp;)-instance-method">
+      <div class="signature">
+        
+        def <strong>num_threads</strong>(*args, **options, &)
+
+        <a class="method-permalink" href="#num_threads%28%2Aargs%2C%2A%2Aoptions%2C%26%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>This controls the number of CPU threads that the interpreter will use for its computations.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L41" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_error(&amp;callback:String-&gt;Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_error</strong>(&callback : String -> Nil)
+
+        <a class="method-permalink" href="#on_error%28%26callback%3AString-%3ENil%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>provide a callback to receive any error messages</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L44" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="options:InterpreterOptions-instance-method">
+      <div class="signature">
+        
+        def <strong>options</strong> : <a href="../TensorflowLite/InterpreterOptions.html">InterpreterOptions</a>
+
+        <a class="method-permalink" href="#options%3AInterpreterOptions-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L37" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="output(index:Int=0)-instance-method">
+      <div class="signature">
+        
+        def <strong>output</strong>(index : Int = <span class="n">0</span>)
+
+        <a class="method-permalink" href="#output%28index%3AInt%3D0%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>returns the output tensor at the provided index</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L68" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="output_tensor(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>output_tensor</strong>(*args, **options)
+
+        <a class="method-permalink" href="#output_tensor%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>output tensors details, used to obtain the results of an invokation</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L55" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="output_tensor(*args,**options,&amp;)-instance-method">
+      <div class="signature">
+        
+        def <strong>output_tensor</strong>(*args, **options, &)
+
+        <a class="method-permalink" href="#output_tensor%28%2Aargs%2C%2A%2Aoptions%2C%26%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>output tensors details, used to obtain the results of an invokation</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L55" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="output_tensor_count(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>output_tensor_count</strong>(*args, **options)
+
+        <a class="method-permalink" href="#output_tensor_count%28%2Aargs%2C%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>output tensors details, used to obtain the results of an invokation</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L55" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="output_tensor_count(*args,**options,&amp;)-instance-method">
+      <div class="signature">
+        
+        def <strong>output_tensor_count</strong>(*args, **options, &)
+
+        <a class="method-permalink" href="#output_tensor_count%28%2Aargs%2C%2A%2Aoptions%2C%26%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>output tensors details, used to obtain the results of an invokation</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L55" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="outputs-instance-method">
+      <div class="signature">
+        
+        def <strong>outputs</strong>
+
+        <a class="method-permalink" href="#outputs-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>returns an array of output tensors</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L73" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="size-instance-method">
+      <div class="signature">
+        
+        def <strong>size</strong>
+
+        <a class="method-permalink" href="#size-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>the number of input tensors</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/62e17a694cabe04df4c497c9efabd270086c3b3b/src/tensorflow_lite/client.cr#L63" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
