@@ -24,7 +24,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: Install build deps
       run: |
-        apk add --update --no-cache build-essential libstdc++6 libc6-dev python3 cmake g++ make alpine-sdk linux-headers
+        apk add --update --no-cache libstdc++6 python3 cmake g++ make alpine-sdk linux-headers
         (cd "/usr/bin" && wget https://releases.bazel.build/5.3.0/release/bazel-5.3.0-linux-x86_64 && chmod +x bazel-5.3.0-linux-x86_64)
     - name: Install dependencies
       run: shards install --ignore-crystal-version -v
