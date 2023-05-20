@@ -12,20 +12,18 @@ jobs:
         experimental: [false]
         os: [ubuntu-latest]
         crystal:
-          - latest
-        include:
-          - experimental: true
-            os: ubuntu-latest
-            crystal: nightly
+          - master-debian-11
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental }}
-    container: crystallang/crystal:${{ matrix.crystal }}-alpine
+    container: 84codes/crystal:${{ matrix.crystal }}
     steps:
     - uses: actions/checkout@v3
     - name: Install build deps
       run: |
-        apk add --update --no-cache libstdc++6 python3 cmake g++ make alpine-sdk linux-headers
-        (cd "/usr/bin" && wget https://releases.bazel.build/5.3.0/release/bazel-5.3.0-linux-x86_64 && chmod +x bazel-5.3.0-linux-x86_64)
+        apt-get update && apt-get install -y gnupg wget curl apt-transport-https ca-certificates
+        wget -q -O - https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor > /etc/apt/trusted.gpg.d/coral-edgetpu.gpg
+        echo "deb [signed-by=/etc/apt/trusted.gpg.d/coral-edgetpu.gpg] https://packages.cloud.google.com/apt coral-edgetpu-stable main" | tee /etc/apt/sources.list.d/coral-edgetpu.list
+        apt update && apt install -y build-essential cmake linux-headers-generic git python3 opencl-headers libopencv-core-dev clang-format-9 libedgetpu-dev libedgetpu1-std
     - name: Install dependencies
       run: shards install --ignore-crystal-version -v
     - name: Format
