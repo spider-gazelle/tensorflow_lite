@@ -25,9 +25,11 @@ jobs:
         echo "deb [signed-by=/etc/apt/trusted.gpg.d/coral-edgetpu.gpg] https://packages.cloud.google.com/apt coral-edgetpu-stable main" | tee /etc/apt/sources.list.d/coral-edgetpu.list
         apt update && apt install -y build-essential cmake linux-headers-generic git python3 opencl-headers libopencv-core-dev clang-format-9 libedgetpu-dev libedgetpu1-std
     - name: Install dependencies
-      run: shards install --without-development --ignore-crystal-version -v
+      run: shards install --without-development --skip-postinstall --ignore-crystal-version -v
     - name: Format
       run: crystal tool format --check
+    - name: Install Tensorflow Lite
+      run: ./build_tensorflowlite.sh IS_LIB
     - name: Run tests
       run: crystal spec -v --error-trace
       env:
