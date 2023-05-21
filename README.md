@@ -1,6 +1,6 @@
 # tensorflow_lite
 
-A library for running TF Lite models
+[![CI](https://github.com/spider-gazelle/tensorflow_lite/actions/workflows/ci.yml/badge.svg)](https://github.com/spider-gazelle/tensorflow_lite/actions/workflows/ci.yml) A library for running TF Lite models
 
 * once you've trained a model in TensorFlow you can convert it to [TF Lite](https://www.tensorflow.org/lite/models/convert/convert_models#command_line_tool_) for production use
 * inspect the TF Lite model using [netron.app](https://netron.app/)
