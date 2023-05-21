@@ -214,7 +214,7 @@
   </h2>
   
     
-      <a href="https://github.com/spider-gazelle/tensorflow_lite/blob/c93d092fbf6f6a3d36a23f76fd2da585ef9b7d17/src/tensorflow_lite/interpreter.cr#L5" target="_blank">
+      <a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/interpreter.cr#L5" target="_blank">
         tensorflow_lite/interpreter.cr
       </a>
     
@@ -269,6 +269,13 @@
         <a href="#input_tensor_count%3AInt32-instance-method" class="signature"><strong>#input_tensor_count</strong> : Int32</a>
         
           <div class="summary"><p>the number of input tensors that are used to feed data into the model</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inspect%28io%3AIO%29%3ANil-instance-method" class="signature"><strong>#inspect</strong>(io : IO) : Nil</a>
+        
+          <div class="summary"><p>Appends a String representation of this object which includes its class name, its object address and the values of all instance variables.</p></div>
         
       </li>
     
@@ -370,7 +377,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/c93d092fbf6f6a3d36a23f76fd2da585ef9b7d17/src/tensorflow_lite/interpreter.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/interpreter.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -405,7 +412,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/c93d092fbf6f6a3d36a23f76fd2da585ef9b7d17/src/tensorflow_lite/interpreter.cr#L49" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/interpreter.cr#L49" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -426,7 +433,40 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/c93d092fbf6f6a3d36a23f76fd2da585ef9b7d17/src/tensorflow_lite/interpreter.cr#L44" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/interpreter.cr#L44" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inspect(io:IO):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>inspect</strong>(io : IO) : Nil
+
+        <a class="method-permalink" href="#inspect%28io%3AIO%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class Reference
+            </div>
+          
+          <p>Appends a String representation of this object
+which includes its class name, its object address
+and the values of all instance variables.</p>
+<pre><code class="language-crystal"><span class="k">class</span> <span class="t">Person</span>
+  <span class="k">def</span> <span class="m">initialize</span>(@name : <span class="t">String</span>, @age : <span class="t">Int32</span>)
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="t">Person</span>.new(<span class="s">&quot;John&quot;</span>, <span class="n">32</span>).inspect <span class="c"># =&gt; #&lt;Person:0x10fd31f20 @name=&quot;John&quot;, @age=32&gt;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/interpreter.cr#L91" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -448,7 +488,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/c93d092fbf6f6a3d36a23f76fd2da585ef9b7d17/src/tensorflow_lite/interpreter.cr#L80" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/interpreter.cr#L80" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -469,7 +509,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/c93d092fbf6f6a3d36a23f76fd2da585ef9b7d17/src/tensorflow_lite/interpreter.cr#L85" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/interpreter.cr#L85" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -490,7 +530,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/c93d092fbf6f6a3d36a23f76fd2da585ef9b7d17/src/tensorflow_lite/interpreter.cr#L29" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/interpreter.cr#L29" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -511,7 +551,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/c93d092fbf6f6a3d36a23f76fd2da585ef9b7d17/src/tensorflow_lite/interpreter.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/interpreter.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -532,7 +572,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/c93d092fbf6f6a3d36a23f76fd2da585ef9b7d17/src/tensorflow_lite/interpreter.cr#L60" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/interpreter.cr#L60" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -553,7 +593,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/c93d092fbf6f6a3d36a23f76fd2da585ef9b7d17/src/tensorflow_lite/interpreter.cr#L55" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/interpreter.cr#L55" target="_blank">View source</a>]
         
       </div>
     </div>
