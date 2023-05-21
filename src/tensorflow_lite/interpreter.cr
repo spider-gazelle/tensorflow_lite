@@ -87,4 +87,37 @@ class TensorflowLite::Interpreter
     raise InvokeError.new("invoke failed with #{result}") unless result.ok?
     self
   end
+
+  def inspect(io : IO) : Nil
+    io << {{@type.name.id.stringify}}
+
+    num_inputs = input_tensor_count
+    io << "(\n  input count: " << num_inputs
+    (0...num_inputs).each do |index|
+      tensor = input_tensor(index)
+      io << "\n  input - " << tensor.name
+      io << "\n    type: " << tensor.type
+      begin
+        io << "\n    inputs: " << tensor.io_count
+      rescue
+        io << "\n    bytesize: " << tensor.bytesize
+      end
+      io << "\n    dimensions: " << tensor.map(&.to_s).join("x")
+    end
+
+    num_outputs = output_tensor_count
+    io << "\n  output count: " << num_outputs
+    (0...num_outputs).each do |index|
+      tensor = output_tensor(index)
+      io << "\n  output - " << tensor.name
+      io << "\n    type: " << tensor.type
+      begin
+        io << "\n    outputs: " << tensor.io_count
+      rescue
+        io << "\n    bytesize: " << tensor.bytesize
+      end
+      io << "\n    dimensions: " << tensor.map(&.to_s).join("x")
+    end
+    io << "\n)"
+  end
 end
