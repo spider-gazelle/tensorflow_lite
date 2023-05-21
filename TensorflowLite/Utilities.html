@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="tensorflow_lite">
-  <title>TensorflowLite::Model - tensorflow_lite main</title>
+  <title>TensorflowLite::Utilities - tensorflow_lite main</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -121,7 +121,7 @@
       
     </li>
   
-  <li class=" current" data-id="tensorflow_lite/TensorflowLite/Model" data-name="tensorflowlite::model">
+  <li class=" " data-id="tensorflow_lite/TensorflowLite/Model" data-name="tensorflowlite::model">
       <a href="../TensorflowLite/Model.html">Model</a>
       
     </li>
@@ -141,7 +141,7 @@
       
     </li>
   
-  <li class="parent " data-id="tensorflow_lite/TensorflowLite/Utilities" data-name="tensorflowlite::utilities">
+  <li class="parent open current" data-id="tensorflow_lite/TensorflowLite/Utilities" data-name="tensorflowlite::utilities">
       <a href="../TensorflowLite/Utilities.html">Utilities</a>
       
         <ul>
@@ -170,28 +170,13 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> TensorflowLite::Model
+  <span class="kind">module</span> TensorflowLite::Utilities
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../TensorflowLite/Model.html">TensorflowLite::Model</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
-
-
-  <h2>
-    <a id="overview" class="anchor" href="#overview">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Overview
-  </h2>
-
-  <p>Models are a machine learning model that has been trained using TensorFlow and then converted into a format that is optimized for on-device use.</p>
-<p>A TensorFlow Lite model typically has the file extension .tflite.
-The process of converting a regular TensorFlow model to this format often involves a few steps, such as &quot;freezing&quot; the model (converting all its variables to constants), and then applying optimizations like quantization to reduce the size of the model and improve its execution speed.</p>
 
 
 
@@ -216,8 +201,8 @@ The process of converting a regular TensorFlow model to this format often involv
   </h2>
   
     
-      <a href="https://github.com/spider-gazelle/tensorflow_lite/blob/f4b2f6e3a34ec59dcab5a14d6561ddf5db2ecbd5/src/tensorflow_lite/model.cr#L9" target="_blank">
-        tensorflow_lite/model.cr
+      <a href="https://github.com/spider-gazelle/tensorflow_lite/blob/f4b2f6e3a34ec59dcab5a14d6561ddf5db2ecbd5/src/tensorflow_lite/utilities/extract_labels.cr#L4" target="_blank">
+        tensorflow_lite/utilities/extract_labels.cr
       </a>
     
     <br/>
@@ -226,32 +211,6 @@ The process of converting a regular TensorFlow model to this format often involv
 
 
 
-
-  <h2>
-    <a id="constructors" class="anchor" href="#constructors">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Constructors
-  </h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#new%28bytes%3ABytes%29-class-method" class="signature"><strong>.new</strong>(bytes : Bytes)</a>
-        
-          <div class="summary"><p>use this to if the tflite model is already loaded into memory</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#new%28path%3APath%29-class-method" class="signature"><strong>.new</strong>(path : Path)</a>
-        
-          <div class="summary"><p>specify a path to load the tflite model from a file</p></div>
-        
-      </li>
-    
-  </ul>
 
 
 
@@ -263,80 +222,8 @@ The process of converting a regular TensorFlow model to this format often involv
 
 <div class="methods-inherited">
   
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-  
 </div>
 
-
-  <h2>
-    <a id="constructor-detail" class="anchor" href="#constructor-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Constructor Detail
-  </h2>
-  
-    <div class="entry-detail" id="new(bytes:Bytes)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(bytes : Bytes)
-
-        <a class="method-permalink" href="#new%28bytes%3ABytes%29-class-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>use this to if the tflite model is already loaded into memory</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/f4b2f6e3a34ec59dcab5a14d6561ddf5db2ecbd5/src/tensorflow_lite/model.cr#L11" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="new(path:Path)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(path : Path)
-
-        <a class="method-permalink" href="#new%28path%3APath%29-class-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>specify a path to load the tflite model from a file</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/f4b2f6e3a34ec59dcab5a14d6561ddf5db2ecbd5/src/tensorflow_lite/model.cr#L18" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
 
 
 

@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../../js/doc.js"></script>
 
   <meta name="repository-name" content="tensorflow_lite">
-  <title>TensorflowLite::Interpreter::InvokeError - tensorflow_lite main</title>
+  <title>TensorflowLite::Utilities::ExtractLabels - tensorflow_lite main</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../";
   </script>
@@ -96,12 +96,12 @@
       
     </li>
   
-  <li class="parent open current" data-id="tensorflow_lite/TensorflowLite/Interpreter" data-name="tensorflowlite::interpreter">
+  <li class="parent " data-id="tensorflow_lite/TensorflowLite/Interpreter" data-name="tensorflowlite::interpreter">
       <a href="../../TensorflowLite/Interpreter.html">Interpreter</a>
       
         <ul>
   
-  <li class=" current" data-id="tensorflow_lite/TensorflowLite/Interpreter/InvokeError" data-name="tensorflowlite::interpreter::invokeerror">
+  <li class=" " data-id="tensorflow_lite/TensorflowLite/Interpreter/InvokeError" data-name="tensorflowlite::interpreter::invokeerror">
       <a href="../../TensorflowLite/Interpreter/InvokeError.html">InvokeError</a>
       
     </li>
@@ -141,12 +141,12 @@
       
     </li>
   
-  <li class="parent " data-id="tensorflow_lite/TensorflowLite/Utilities" data-name="tensorflowlite::utilities">
+  <li class="parent open current" data-id="tensorflow_lite/TensorflowLite/Utilities" data-name="tensorflowlite::utilities">
       <a href="../../TensorflowLite/Utilities.html">Utilities</a>
       
         <ul>
   
-  <li class=" " data-id="tensorflow_lite/TensorflowLite/Utilities/ExtractLabels" data-name="tensorflowlite::utilities::extractlabels">
+  <li class=" current" data-id="tensorflow_lite/TensorflowLite/Utilities/ExtractLabels" data-name="tensorflowlite::utilities::extractlabels">
       <a href="../../TensorflowLite/Utilities/ExtractLabels.html">ExtractLabels</a>
       
     </li>
@@ -170,26 +170,13 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> TensorflowLite::Interpreter::InvokeError
+  <span class="kind">module</span> TensorflowLite::Utilities::ExtractLabels
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../TensorflowLite/Interpreter/InvokeError.html">TensorflowLite::Interpreter::InvokeError</a></li><li class="superclass">RuntimeError</li><li class="superclass">Exception</li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
-
-
-  <h2>
-    <a id="overview" class="anchor" href="#overview">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Overview
-  </h2>
-
-  <p>raised if an invokation of a model fails</p>
 
 
 
@@ -214,8 +201,8 @@
   </h2>
   
     
-      <a href="https://github.com/spider-gazelle/tensorflow_lite/blob/f4b2f6e3a34ec59dcab5a14d6561ddf5db2ecbd5/src/tensorflow_lite/interpreter.cr#L7" target="_blank">
-        tensorflow_lite/interpreter.cr
+      <a href="https://github.com/spider-gazelle/tensorflow_lite/blob/f4b2f6e3a34ec59dcab5a14d6561ddf5db2ecbd5/src/tensorflow_lite/utilities/extract_labels.cr#L4" target="_blank">
+        tensorflow_lite/utilities/extract_labels.cr
       </a>
     
     <br/>
@@ -223,9 +210,53 @@
 
 
 
+  
+    <h2>
+      <a id="constant-summary" class="anchor" href="#constant-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+      Constant Summary
+    </h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="MAGIC_ZIP">
+        <strong>MAGIC_ZIP</strong> = <code><span class="t">Bytes</span>[<span class="n">80</span>, <span class="n">75</span>, <span class="n">3</span>, <span class="n">4</span>]</code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>File type detection
+https://github.com/sindresorhus/file-type/blob/main/core.js
+https://en.wikipedia.org/wiki/ZIP_(file_format)</p>
+      </dd>
+      
+    
+  </dl>
 
 
 
+
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#from%28input%3APath%2Cmetadata_file%3AString%3D%22.txt%22%29%3AHash%28Int32%2CString%29%7CNil-class-method" class="signature"><strong>.from</strong>(input : Path, metadata_file : String = <span class="s">&quot;.txt&quot;</span>) : Hash(Int32, String) | Nil</a>
+        
+          <div class="summary"><p>extracts the label names from tensorflow lite model at the path specified</p></div>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -235,60 +266,41 @@
 
 <div class="methods-inherited">
   
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-  
 </div>
 
 
 
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="from(input:Path,metadata_file:String=&quot;.txt&quot;):Hash(Int32,String)|Nil-class-method">
+      <div class="signature">
+        
+        def self.<strong>from</strong>(input : Path, metadata_file : String = <span class="s">&quot;.txt&quot;</span>) : Hash(Int32, String) | Nil
+
+        <a class="method-permalink" href="#from%28input%3APath%2Cmetadata_file%3AString%3D%22.txt%22%29%3AHash%28Int32%2CString%29%7CNil-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>extracts the label names from tensorflow lite model at the path specified</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/f4b2f6e3a34ec59dcab5a14d6561ddf5db2ecbd5/src/tensorflow_lite/utilities/extract_labels.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
 
 
 
