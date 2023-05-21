@@ -4,6 +4,8 @@ module TensorflowLite
   SPEC_TF_L_MODEL = Path.new "./bin/mobilenet_v1.tflite"
 
   unless File.exists? SPEC_TF_L_MODEL
+    Dir.mkdir_p "./bin/"
+
     puts "downloading tensorflow model for spec..."
     # details: https://tfhub.dev/tensorflow/lite-model/ssd_mobilenet_v1/1/metadata/2
     HTTP::Client.get("https://storage.googleapis.com/tfhub-lite-models/tensorflow/lite-model/ssd_mobilenet_v1/1/metadata/2.tflite") do |response|
