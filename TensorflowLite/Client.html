@@ -229,7 +229,7 @@
   </h2>
   
     
-      <a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L6" target="_blank">
+      <a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L6" target="_blank">
         tensorflow_lite/client.cr
       </a>
     
@@ -251,7 +251,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28model%3ABytes%7CPath%7CModel%7CString%2Cdelegate%3ADelegate%7CNil%3Dnil%2Cthreads%3AInt%7CNil%3Dnil%2C%26on_error%3AString-%3ENil%29-class-method" class="signature"><strong>.new</strong>(model : Bytes | Path | Model | String, delegate : Delegate | Nil = <span class="n">nil</span>, threads : Int | Nil = <span class="n">nil</span>, &on_error : String -> Nil)</a>
+        <a href="#new%28model%3ABytes%7CPath%7CModel%7CString%2Cdelegate%3ADelegate%7CNil%3Dnil%2Cthreads%3AInt%7CNil%3Dnil%2Clabels%3AHash%28Int32%2CString%29%7CNil%3Dnil%2C%26on_error%3AString-%3ENil%29-class-method" class="signature"><strong>.new</strong>(model : Bytes | Path | Model | String, delegate : Delegate | Nil = <span class="n">nil</span>, threads : Int | Nil = <span class="n">nil</span>, labels : Hash(Int32, String) | Nil = <span class="n">nil</span>, &on_error : String -> Nil)</a>
         
           <div class="summary"><p>Configures the tensorflow interpreter with the options provided</p></div>
         
@@ -342,7 +342,24 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#labels-instance-method" class="signature"><strong>#labels</strong></a>
+        
+          <div class="summary"><p>attempt to extract any labels in the model</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#labels_fetched%3ABool-instance-method" class="signature"><strong>#labels_fetched</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#model%3AModel-instance-method" class="signature"><strong>#model</strong> : Model</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#model_path%3APath%7CNil-instance-method" class="signature"><strong>#model_path</strong> : Path | Nil</a>
         
       </li>
     
@@ -491,12 +508,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(model:Bytes|Path|Model|String,delegate:Delegate|Nil=nil,threads:Int|Nil=nil,&amp;on_error:String-&gt;Nil)-class-method">
+    <div class="entry-detail" id="new(model:Bytes|Path|Model|String,delegate:Delegate|Nil=nil,threads:Int|Nil=nil,labels:Hash(Int32,String)|Nil=nil,&amp;on_error:String-&gt;Nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(model : Bytes | Path | <a href="../TensorflowLite/Model.html">Model</a> | String, delegate : <a href="../TensorflowLite/Delegate.html">Delegate</a> | Nil = <span class="n">nil</span>, threads : Int | Nil = <span class="n">nil</span>, &on_error : String -> Nil)
+        def self.<strong>new</strong>(model : Bytes | Path | <a href="../TensorflowLite/Model.html">Model</a> | String, delegate : <a href="../TensorflowLite/Delegate.html">Delegate</a> | Nil = <span class="n">nil</span>, threads : Int | Nil = <span class="n">nil</span>, labels : Hash(Int32, String) | Nil = <span class="n">nil</span>, &on_error : String -> Nil)
 
-        <a class="method-permalink" href="#new%28model%3ABytes%7CPath%7CModel%7CString%2Cdelegate%3ADelegate%7CNil%3Dnil%2Cthreads%3AInt%7CNil%3Dnil%2C%26on_error%3AString-%3ENil%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28model%3ABytes%7CPath%7CModel%7CString%2Cdelegate%3ADelegate%7CNil%3Dnil%2Cthreads%3AInt%7CNil%3Dnil%2Clabels%3AHash%28Int32%2CString%29%7CNil%3Dnil%2C%26on_error%3AString-%3ENil%29-class-method">#</a>
       </div>
       
         <div class="doc">
@@ -507,7 +524,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L10" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -528,7 +545,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L35" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -563,7 +580,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L49" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L53" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -584,7 +601,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L49" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L53" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -605,7 +622,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L49" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L53" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -626,7 +643,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L49" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L53" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -642,7 +659,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L38" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L42" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -663,7 +680,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L52" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L56" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -684,7 +701,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L52" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L56" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -705,7 +722,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L52" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L56" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -726,7 +743,44 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L52" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L56" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="labels-instance-method">
+      <div class="signature">
+        
+        def <strong>labels</strong>
+
+        <a class="method-permalink" href="#labels-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>attempt to extract any labels in the model</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L85" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="labels_fetched:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>labels_fetched</strong> : Bool
+
+        <a class="method-permalink" href="#labels_fetched%3ABool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L81" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -742,7 +796,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="model_path:Path|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>model_path</strong> : Path | Nil
+
+        <a class="method-permalink" href="#model_path%3APath%7CNil-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -763,7 +833,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L41" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L45" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -784,7 +854,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L41" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L45" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -805,7 +875,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L44" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -821,7 +891,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L41" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -842,7 +912,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L68" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L72" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -863,7 +933,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L55" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -884,7 +954,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L55" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -905,7 +975,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L55" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -926,7 +996,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L55" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -947,7 +1017,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L73" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L77" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -968,7 +1038,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cd75e7bb2e9f6f5e85e0e5cf837e2bee29623758/src/tensorflow_lite/client.cr#L63" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/cedf553d78cf8124cbe51d7477ebe94edd74f5ed/src/tensorflow_lite/client.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>
