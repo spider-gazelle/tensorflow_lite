@@ -20,8 +20,16 @@ module TensorflowLite
       labels.as(Hash(Int32, String)).size.should eq 90
     end
 
+    client = Client.new(SPEC_TF_L_MODEL)
+
+    it "extracts the tensorflow model label map using the client" do
+      client.labels_fetched.should be_false
+      client.labels.as(Hash(Int32, String)).size.should eq 90
+      client.labels_fetched.should be_true
+      client.labels.as(Hash(Int32, String)).size.should eq 90
+    end
+
     it "a client can be inspected" do
-      client = Client.new(SPEC_TF_L_MODEL)
       details = client.interpreter.inspect
       puts details
       details.should eq <<-STRING

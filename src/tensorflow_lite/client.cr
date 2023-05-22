@@ -7,11 +7,14 @@ class TensorflowLite::Client
   include Indexable(Tensor)
 
   # Configures the tensorflow interpreter with the options provided
-  def initialize(model : Bytes | Path | Model | String, delegate : Delegate? = nil, threads : Int? = nil, &on_error : String -> Nil)
+  def initialize(model : Bytes | Path | Model | String, delegate : Delegate? = nil, threads : Int? = nil, @labels : Hash(Int32, String)? = nil, &on_error : String -> Nil)
+    @labels_fetched = !!@labels
     @model = case model
-             in String
-               Model.new(Path.new(model))
-             in Bytes, Path
+             in String, Path
+               path = Path.new(model)
+               @model_path = path
+               Model.new(path)
+             in Bytes
                Model.new(model)
              in Model
                model
@@ -34,6 +37,7 @@ class TensorflowLite::Client
   end
 
   getter model : Model
+  getter model_path : Path? = nil
   getter options : InterpreterOptions
   getter interpreter : Interpreter
 
@@ -72,5 +76,18 @@ class TensorflowLite::Client
   # returns an array of output tensors
   def outputs
     (0...output_tensor_count).map { |index| output_tensor(index) }
+  end
+
+  getter labels_fetched : Bool
+  @labels : Hash(Int32, String)?
+
+  # attempt to extract any labels in the model
+  def labels
+    if (labels = @labels) || @labels_fetched
+      labels
+    elsif path = @model_path
+      @labels_fetched = true
+      @labels = Utilities::ExtractLabels.from(path)
+    end
   end
 end
