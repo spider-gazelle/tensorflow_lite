@@ -118,6 +118,7 @@ struct TensorflowLite::Tensor
     the_type = type
     raise TypeCastError.new("can't convert #{the_type} to #{ {{klass}} }") unless the_type == Type::{{klass}}
     data_ptr = LibTensorflowLite.tensor_data(self)
+    raise "no tensor data allocated" if data_ptr.null?
     count = bytesize // sizeof({{klass}})
     Slice.new(data_ptr.as(Pointer({{klass}})), count)
   end

@@ -3,10 +3,12 @@ require "va_list"
 require "./lib_tensorflowlite"
 require "./delegate"
 
-# :nodoc:
-lib C
-  fun vasprintf(strp : LibC::Char**, format : LibC::Char*, ap : LibC::VaList) : LibC::Int
-end
+# can't use va_list as it's past by value and almost impossible to forward
+# or even interpret on different platforms. Just means our error messages
+# will probably be somewhat lacking until resolved.
+# lib C
+#  fun vasprintf(strp : LibC::Char**, format : LibC::Char*, ap : LibC::VaList) : LibC::Int
+# end
 
 # Interpreter options provide a way to configure various aspects of the TensorFlow Lite runtime
 class TensorflowLite::InterpreterOptions
@@ -36,15 +38,16 @@ class TensorflowLite::InterpreterOptions
     # we need our callback to be available
     callback_ptr = Box.box(callback)
     @callback_ref = callback_ptr
-    LibTensorflowLite.interpreter_options_set_error_reporter(self, ->(boxed_callback, raw_message, raw_args) {
-      result = C.vasprintf(out msg, raw_message, raw_args)
-      if result != -1
-        formatted_msg = String.new(msg)
-        LibC.free(msg.as(Pointer(Void)))
-      else
-        # failed to format the string, we'll use the message passed to us as a fallback
-        formatted_msg = String.new(raw_message)
-      end
+    LibTensorflowLite.interpreter_options_set_error_reporter(self, ->(boxed_callback, raw_message, _raw_args) {
+      formatted_msg = String.new(raw_message)
+      # result = C.vasprintf(out msg, raw_message, raw_args)
+      # if result != -1
+      #   formatted_msg = String.new(msg)
+      #   LibC.free(msg.as(Pointer(Void)))
+      # else
+      #   # failed to format the string, we'll use the message passed to us as a fallback
+      #   formatted_msg = String.new(raw_message)
+      # end
       unboxed_callback = Box(typeof(callback)).unbox(boxed_callback)
       unboxed_callback.call(formatted_msg)
       nil
