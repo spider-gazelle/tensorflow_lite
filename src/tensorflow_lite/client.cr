@@ -1,3 +1,4 @@
+require "uri"
 require "../tensorflow_lite"
 
 # provides a simplified way to load and manipulate the tensorflow interpreter
@@ -7,7 +8,7 @@ class TensorflowLite::Client
   include Indexable(Tensor)
 
   # Configures the tensorflow interpreter with the options provided
-  def initialize(model : Bytes | Path | Model | String, delegate : Delegate? = nil, threads : Int? = nil, @labels : Hash(Int32, String)? = nil, &on_error : String -> Nil)
+  def initialize(model : URI| Bytes | Path | Model | String, delegate : Delegate? = nil, threads : Int? = nil, labels : URI | Hash(Int32, String)? = nil, &on_error : String -> Nil)
     @labels_fetched = !!@labels
     @model = case model
              in String, Path
@@ -18,7 +19,28 @@ class TensorflowLite::Client
                Model.new(model)
              in Model
                model
+             in URI
+               HTTP::Client.get(model) do |response|
+                raise "model download failed with #{response.status} (#{response.status_code}) while fetching #{model}" unless response.success?
+                Model.new response.body_io.getb_to_end
+               end
              end
+
+    @labels = case labels
+              in URI
+                response = HTTP::Client.get(labels)
+                raise "labels download failed with #{response.status} (#{response.status_code}) while fetching #{labels}" unless response.success?
+
+                labels_keys = {} of Int32 => String
+                idx = 0
+                response.body.each_line do |line|
+                  labels_keys[idx] = line
+                  idx += 1
+                end
+                labels_keys
+              in Hash(Int32, String)?
+                labels
+              end
 
     @options = InterpreterOptions.new
     @options.on_error(&on_error)

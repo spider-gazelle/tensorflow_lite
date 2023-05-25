@@ -96,5 +96,19 @@ module TensorflowLite
       client.outputs.size.should eq 1
       client.output.should eq client.outputs[0]
     end
+
+    it "downloads models if a URI is provided to the client" do
+      model = URI.parse "https://raw.githubusercontent.com/google-coral/test_data/master/ssdlite_mobiledet_coco_qat_postprocess.tflite"
+      labels = URI.parse "https://raw.githubusercontent.com/google-coral/test_data/master/coco_labels.txt"
+      last_error = ""
+
+      client = Client.new(model, labels: labels) do |error_msg|
+        last_error = error_msg
+      end
+
+      last_error.should eq ""
+      client.outputs.size.should eq 4
+      client.labels.as(Hash(Int32, String)).size.should eq 90
+    end
   end
 end
