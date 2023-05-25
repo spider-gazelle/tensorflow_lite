@@ -8,7 +8,7 @@ class TensorflowLite::Client
   include Indexable(Tensor)
 
   # Configures the tensorflow interpreter with the options provided
-  def initialize(model : URI| Bytes | Path | Model | String, delegate : Delegate? = nil, threads : Int? = nil, labels : URI | Hash(Int32, String)? = nil, &on_error : String -> Nil)
+  def initialize(model : URI | Bytes | Path | Model | String, delegate : Delegate? = nil, threads : Int? = nil, labels : URI | Hash(Int32, String)? = nil, &on_error : String -> Nil)
     @labels_fetched = !!@labels
     @model = case model
              in String, Path
@@ -16,13 +16,15 @@ class TensorflowLite::Client
                @model_path = path
                Model.new(path)
              in Bytes
+               @model_bytes = model
                Model.new(model)
              in Model
                model
              in URI
                HTTP::Client.get(model) do |response|
-                raise "model download failed with #{response.status} (#{response.status_code}) while fetching #{model}" unless response.success?
-                Model.new response.body_io.getb_to_end
+                 raise "model download failed with #{response.status} (#{response.status_code}) while fetching #{model}" unless response.success?
+                 @model_bytes = model_bytes = response.body_io.getb_to_end
+                 Model.new model_bytes
                end
              end
 
@@ -102,6 +104,7 @@ class TensorflowLite::Client
 
   getter labels_fetched : Bool
   @labels : Hash(Int32, String)?
+  @model_bytes : Bytes? = nil
 
   # attempt to extract any labels in the model
   def labels
@@ -110,6 +113,10 @@ class TensorflowLite::Client
     elsif path = @model_path
       @labels_fetched = true
       @labels = Utilities::ExtractLabels.from(path)
+    elsif bytes = @model_bytes
+      @labels_fetched = true
+      @model_bytes = nil
+      @labels = Utilities::ExtractLabels.from(bytes)
     end
   end
 end
