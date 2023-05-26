@@ -108,7 +108,7 @@ module TensorflowLite
 
       last_error.should eq ""
       client.outputs.size.should eq 4
-      client.labels.as(Hash(Int32, String)).size.should eq 90
+      client.labels.as(Array(String)).size.should eq 90
     end
   end
 end

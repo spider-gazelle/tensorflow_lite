@@ -8,12 +8,12 @@ class TensorflowLite::Client
   include Indexable(Tensor)
 
   # Configures the tensorflow interpreter with the options provided
-  def self.new(model : URI | Bytes | Path | Model | String, delegate : Delegate? = nil, threads : Int? = nil, labels : URI | Hash(Int32, String)? = nil)
+  def self.new(model : URI | Bytes | Path | Model | String, delegate : Delegate? = nil, threads : Int? = nil, labels : URI | Array(String)? = nil)
     Client.new(model, delegate, threads, labels) { |error_message| Log.error { error_message } }
   end
 
   # :ditto:
-  def initialize(model : URI | Bytes | Path | Model | String, delegate : Delegate? = nil, threads : Int? = nil, labels : URI | Hash(Int32, String)? = nil, &on_error : String -> Nil)
+  def initialize(model : URI | Bytes | Path | Model | String, delegate : Delegate? = nil, threads : Int? = nil, labels : URI | Array(String)? = nil, &on_error : String -> Nil)
     @labels_fetched = !!@labels
     @model = case model
              in String, Path
@@ -37,15 +37,8 @@ class TensorflowLite::Client
               in URI
                 response = HTTP::Client.get(labels)
                 raise "labels download failed with #{response.status} (#{response.status_code}) while fetching #{labels}" unless response.success?
-
-                labels_keys = {} of Int32 => String
-                idx = 0
-                response.body.each_line do |line|
-                  labels_keys[idx] = line
-                  idx += 1
-                end
-                labels_keys
-              in Hash(Int32, String)?
+                response.body.each_line.to_a
+              in Array(String)?
                 labels
               end
 
@@ -103,7 +96,7 @@ class TensorflowLite::Client
   end
 
   getter labels_fetched : Bool
-  @labels : Hash(Int32, String)?
+  @labels : Array(String)?
   @model_bytes : Bytes? = nil
 
   # attempt to extract any labels in the model

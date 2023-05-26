@@ -8,7 +8,7 @@ module TensorflowLite::Utilities::ExtractLabels
   MAGIC_ZIP = Bytes[0x50, 0x4b, 0x03, 0x04]
 
   # extracts the label names from tensorflow lite model at the path specified
-  def self.from(input : Path | Bytes, metadata_file : String = ".txt") : Hash(Int32, String)?
+  def self.from(input : Path | Bytes, metadata_file : String = ".txt") : Array(String)?
     # TODO:: we should update this to search the file more optimally
     # and work more memory effciently
     bytes = case input
@@ -42,15 +42,7 @@ module TensorflowLite::Utilities::ExtractLabels
 
                 # loading the labels
                 if entry.filename.ends_with?(metadata_file)
-                  labels = {} of Int32 => String
-
-                  idx = 0
-                  entry.io.each_line do |line|
-                    labels[idx] = line
-                    idx += 1
-                  end
-
-                  return labels
+                  return entry.io.each_line.to_a
                 else
                   files << entry.filename
                 end

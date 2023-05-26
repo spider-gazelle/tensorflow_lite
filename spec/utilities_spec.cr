@@ -17,16 +17,16 @@ module TensorflowLite
   describe Utilities::ExtractLabels do
     it "extracts the tensorflow model label map" do
       labels = Utilities::ExtractLabels.from(SPEC_TF_L_MODEL)
-      labels.as(Hash(Int32, String)).size.should eq 90
+      labels.as(Array(String)).size.should eq 90
     end
 
     client = Client.new(SPEC_TF_L_MODEL)
 
     it "extracts the tensorflow model label map using the client" do
       client.labels_fetched.should be_false
-      client.labels.as(Hash(Int32, String)).size.should eq 90
+      client.labels.as(Array(String)).size.should eq 90
       client.labels_fetched.should be_true
-      client.labels.as(Hash(Int32, String)).size.should eq 90
+      client.labels.as(Array(String)).size.should eq 90
     end
 
     it "a client can be inspected" do
