@@ -8,6 +8,11 @@ class TensorflowLite::Client
   include Indexable(Tensor)
 
   # Configures the tensorflow interpreter with the options provided
+  def self.new(model : URI | Bytes | Path | Model | String, delegate : Delegate? = nil, threads : Int? = nil, labels : URI | Hash(Int32, String)? = nil)
+    Client.new(model, delegate, threads, labels) { |error_message| Log.error { error_message } }
+  end
+
+  # :ditto:
   def initialize(model : URI | Bytes | Path | Model | String, delegate : Delegate? = nil, threads : Int? = nil, labels : URI | Hash(Int32, String)? = nil, &on_error : String -> Nil)
     @labels_fetched = !!@labels
     @model = case model
@@ -53,11 +58,6 @@ class TensorflowLite::Client
       @options.add_delegate delegate
     end
     @interpreter = Interpreter.new(@model, @options)
-  end
-
-  # :ditto:
-  def self.new(model : Bytes | Path | Model | String, delegate : Delegate? = nil, threads : Int? = nil)
-    Client.new(model, delegate, threads) { |error_message| Log.warn { error_message } }
   end
 
   getter model : Model
