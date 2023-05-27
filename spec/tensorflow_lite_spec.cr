@@ -81,6 +81,7 @@ module TensorflowLite
         # configure inputs
         floats = client[0].as_f32
         floats[0], floats[1] = inputs
+        client[0].as_f32.should eq client[0].as_type.as(Slice(Float32))
 
         # run through NN
         client.invoke!
