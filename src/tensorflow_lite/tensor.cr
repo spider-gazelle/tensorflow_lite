@@ -73,6 +73,7 @@ struct TensorflowLite::Tensor
   # buffer that makes up the tensor input
   def raw_data : Bytes
     data_ptr = LibTensorflowLite.tensor_data(self)
+    raise "no tensor data allocated" if data_ptr.null?
     Slice.new(data_ptr.as(Pointer(UInt8)), bytesize)
   end
 
@@ -181,5 +182,33 @@ struct TensorflowLite::Tensor
   # :ditto:
   def as_i64
     to_type(Int64)
+  end
+
+  # returns a slice of the data in the correct type
+  def as_type
+    case type
+    when .float32?
+      as_f32
+    when .float64?
+      as_f64
+    when .u_int8?
+      as_u8
+    when .int8?
+      as_i8
+    when .u_int16?
+      as_u16
+    when .int16?
+      as_i16
+    when .u_int32?
+      as_u32
+    when .int32?
+      as_i32
+    when .u_int64?
+      as_u64
+    when .int64?
+      as_i64
+    else
+      raise NotImplementedError.new("no method for casting to type: #{type}")
+    end
   end
 end
