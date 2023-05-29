@@ -13,8 +13,14 @@ echo "--"
 echo "preparing... (requires build-essential and cmake)"
 echo "--"
 
-# clone the required repositories
-git clone --depth 1 https://github.com/tensorflow/tensorflow
+# clone the required repositories (version compatible with lib EdgeTPU)
+# git clone --depth 1 https://github.com/tensorflow/tensorflow
+mkdir tensorflow && cd tensorflow
+git init
+git remote add origin https://github.com/tensorflow/tensorflow
+git fetch --depth 1 origin a4dfb8d1a71385bd6d122e4f27f86dcebb96712d 
+git checkout FETCH_HEAD
+cd ..
 
 echo "--"
 echo "configuring..."
