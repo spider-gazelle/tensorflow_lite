@@ -15,6 +15,9 @@ echo "--"
 
 # clone the required repositories
 git clone --depth 1 https://github.com/tensorflow/tensorflow
+cd tensorflow
+git apply ../tensorflow.patch
+cd ..
 
 echo "--"
 echo "configuring..."
@@ -22,7 +25,8 @@ echo "--"
 
 mkdir tflite_build
 cd tflite_build
-cmake ../tensorflow/tensorflow/lite/c -DTFLITE_ENABLE_GPU=ON
+cmake ../tensorflow/tensorflow/lite/c \
+  -DTFLITE_ENABLE_GPU=ON
 
 echo "--"
 echo "building..."

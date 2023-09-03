@@ -163,6 +163,47 @@ lib LibTensorflowLite
   BuiltinBitcast                      = 159_i64
   BuiltinBitwiseXor                   = 160_i64
   BuiltinRightShift                   = 161_i64
+  BuiltinStablehloLogistic            = 162_i64
+  BuiltinStablehloAdd                 = 163_i64
+  BuiltinStablehloDivide              = 164_i64
+  BuiltinStablehloMultiply            = 165_i64
+  BuiltinStablehloMaximum             = 166_i64
+  BuiltinStablehloReshape             = 167_i64
+  BuiltinStablehloClamp               = 168_i64
+  BuiltinStablehloConcatenate         = 169_i64
+  BuiltinStablehloBroadcastInDim      = 170_i64
+  BuiltinStablehloConvolution         = 171_i64
+  BuiltinStablehloSlice               = 172_i64
+  BuiltinStablehloCustomCall          = 173_i64
+  BuiltinStablehloReduce              = 174_i64
+  BuiltinStablehloAbs                 = 175_i64
+  BuiltinStablehloAnd                 = 176_i64
+  BuiltinStablehloCosine              = 177_i64
+  BuiltinStablehloExponential         = 178_i64
+  BuiltinStablehloFloor               = 179_i64
+  BuiltinStablehloLog                 = 180_i64
+  BuiltinStablehloMinimum             = 181_i64
+  BuiltinStablehloNegate              = 182_i64
+  BuiltinStablehloOr                  = 183_i64
+  BuiltinStablehloPower               = 184_i64
+  BuiltinStablehloRemainder           = 185_i64
+  BuiltinStablehloRsqrt               = 186_i64
+  BuiltinStablehloSelect              = 187_i64
+  BuiltinStablehloSubtract            = 188_i64
+  BuiltinStablehloTanh                = 189_i64
+  BuiltinStablehloScatter             = 190_i64
+  BuiltinStablehloCompare             = 191_i64
+  BuiltinStablehloConvert             = 192_i64
+  BuiltinStablehloDynamicSlice        = 193_i64
+  BuiltinStablehloDynamicUpdateSlice  = 194_i64
+  BuiltinStablehloPad                 = 195_i64
+  BuiltinStablehloIota                = 196_i64
+  BuiltinStablehloDotGeneral          = 197_i64
+  BuiltinStablehloReduceWindow        = 198_i64
+  BuiltinStablehloSort                = 199_i64
+  BuiltinStablehloWhile               = 200_i64
+  BuiltinStablehloGather              = 201_i64
+  BuiltinStablehloTranspose           = 202_i64
   NoType                              =   0_i64
   Float32                             =   1_i64
   Int32                               =   2_i64
@@ -208,8 +249,7 @@ lib LibTensorflowLite
   fun interpreter_options_add_delegate = TfLiteInterpreterOptionsAddDelegate(options : InterpreterOptions, delegate : OpaqueDelegate*)
   alias OpaqueDelegate = Delegate
   fun interpreter_options_set_error_reporter = TfLiteInterpreterOptionsSetErrorReporter(options : InterpreterOptions, reporter : (Void*, LibC::Char*, VaList -> Void), user_data : Void*)
-  fun interpreter_options_add_registration_external = TfLiteInterpreterOptionsAddRegistrationExternal(options : InterpreterOptions, registration : RegistrationExternal)
-  type RegistrationExternal = Void*
+  fun interpreter_options_add_registration_external = TfLiteInterpreterOptionsAddRegistrationExternal(options : InterpreterOptions, registration : LibC::Int*)
   fun interpreter_options_enable_cancellation = TfLiteInterpreterOptionsEnableCancellation(options : InterpreterOptions, enable : LibC::Int) : Status
   enum Status
     Ok                     = 0
@@ -267,7 +307,8 @@ lib LibTensorflowLite
   fun tensor_quantization_params = TfLiteTensorQuantizationParams(tensor : Tensor) : QuantizationParams
   fun tensor_copy_from_buffer = TfLiteTensorCopyFromBuffer(tensor : Tensor, input_data : Void*, input_data_size : LibC::SizeT) : Status
   fun tensor_copy_to_buffer = TfLiteTensorCopyToBuffer(output_tensor : Tensor, output_data : Void*, output_data_size : LibC::SizeT) : Status
-  fun registration_external_create = TfLiteRegistrationExternalCreate(builtin_code : BuiltinOperator, custom_name : LibC::Char*, version : LibC::Int) : RegistrationExternal
+  fun interpreter_reset_variable_tensors = TfLiteInterpreterResetVariableTensors(interpreter : Interpreter) : Status
+  fun interpreter_options_add_builtin_op = TfLiteInterpreterOptionsAddBuiltinOp(options : InterpreterOptions, op : BuiltinOperator, registration : LibC::Int*, min_version : Int32T, max_version : Int32T)
   enum BuiltinOperator
     BuiltinAdd                          =   0
     BuiltinAveragePool2d                =   1
@@ -431,23 +472,53 @@ lib LibTensorflowLite
     BuiltinBitcast                      = 159
     BuiltinBitwiseXor                   = 160
     BuiltinRightShift                   = 161
+    BuiltinStablehloLogistic            = 162
+    BuiltinStablehloAdd                 = 163
+    BuiltinStablehloDivide              = 164
+    BuiltinStablehloMultiply            = 165
+    BuiltinStablehloMaximum             = 166
+    BuiltinStablehloReshape             = 167
+    BuiltinStablehloClamp               = 168
+    BuiltinStablehloConcatenate         = 169
+    BuiltinStablehloBroadcastInDim      = 170
+    BuiltinStablehloConvolution         = 171
+    BuiltinStablehloSlice               = 172
+    BuiltinStablehloCustomCall          = 173
+    BuiltinStablehloReduce              = 174
+    BuiltinStablehloAbs                 = 175
+    BuiltinStablehloAnd                 = 176
+    BuiltinStablehloCosine              = 177
+    BuiltinStablehloExponential         = 178
+    BuiltinStablehloFloor               = 179
+    BuiltinStablehloLog                 = 180
+    BuiltinStablehloMinimum             = 181
+    BuiltinStablehloNegate              = 182
+    BuiltinStablehloOr                  = 183
+    BuiltinStablehloPower               = 184
+    BuiltinStablehloRemainder           = 185
+    BuiltinStablehloRsqrt               = 186
+    BuiltinStablehloSelect              = 187
+    BuiltinStablehloSubtract            = 188
+    BuiltinStablehloTanh                = 189
+    BuiltinStablehloScatter             = 190
+    BuiltinStablehloCompare             = 191
+    BuiltinStablehloConvert             = 192
+    BuiltinStablehloDynamicSlice        = 193
+    BuiltinStablehloDynamicUpdateSlice  = 194
+    BuiltinStablehloPad                 = 195
+    BuiltinStablehloIota                = 196
+    BuiltinStablehloDotGeneral          = 197
+    BuiltinStablehloReduceWindow        = 198
+    BuiltinStablehloSort                = 199
+    BuiltinStablehloWhile               = 200
+    BuiltinStablehloGather              = 201
+    BuiltinStablehloTranspose           = 202
   end
-  fun registration_external_get_built_in_code = TfLiteRegistrationExternalGetBuiltInCode(registration : RegistrationExternal) : BuiltinOperator
-  fun registration_external_get_version = TfLiteRegistrationExternalGetVersion(registration : RegistrationExternal) : LibC::Int
-  fun registration_external_get_custom_name = TfLiteRegistrationExternalGetCustomName(registration : RegistrationExternal) : LibC::Char*
-  fun registration_external_delete = TfLiteRegistrationExternalDelete(registration : RegistrationExternal)
-  fun registration_external_set_init = TfLiteRegistrationExternalSetInit(registration : RegistrationExternal, init : (OpaqueContext, LibC::Char*, LibC::SizeT -> Void*))
-  type OpaqueContext = Void*
-  fun registration_external_set_free = TfLiteRegistrationExternalSetFree(registration : RegistrationExternal, free : (OpaqueContext, Void* -> Void))
-  fun registration_external_set_prepare = TfLiteRegistrationExternalSetPrepare(registration : RegistrationExternal, prepare : (OpaqueContext, OpaqueNode -> Status))
-  type OpaqueNode = Void*
-  fun registration_external_set_invoke = TfLiteRegistrationExternalSetInvoke(registration : RegistrationExternal, invoke : (OpaqueContext, OpaqueNode -> Status))
-  fun registration_external_set_async_kernel = TfLiteRegistrationExternalSetAsyncKernel(registration : RegistrationExternal, async_kernel : (OpaqueContext, OpaqueNode -> LibC::Int*))
-  fun interpreter_reset_variable_tensors = TfLiteInterpreterResetVariableTensors(interpreter : Interpreter) : Status
-  fun interpreter_options_add_builtin_op = TfLiteInterpreterOptionsAddBuiltinOp(options : InterpreterOptions, op : BuiltinOperator, registration : LibC::Int*, min_version : Int32T, max_version : Int32T)
   fun interpreter_options_add_custom_op = TfLiteInterpreterOptionsAddCustomOp(options : InterpreterOptions, name : LibC::Char*, registration : LibC::Int*, min_version : Int32T, max_version : Int32T)
-  fun interpreter_options_set_op_resolver_external = TfLiteInterpreterOptionsSetOpResolverExternal(options : InterpreterOptions, find_builtin_op : (Void*, LibC::Int, LibC::Int -> RegistrationExternal), find_custom_op : (Void*, LibC::Char*, LibC::Int -> RegistrationExternal), op_resolver_user_data : Void*)
+  fun interpreter_options_set_op_resolver_external = TfLiteInterpreterOptionsSetOpResolverExternal(options : InterpreterOptions, find_builtin_op : (Void*, LibC::Int, LibC::Int -> LibC::Int*), find_custom_op : (Void*, LibC::Char*, LibC::Int -> LibC::Int*), op_resolver_user_data : Void*)
+  fun interpreter_options_set_op_resolver_external_with_fallback = TfLiteInterpreterOptionsSetOpResolverExternalWithFallback(options : InterpreterOptions, find_builtin_op_external : (Void*, LibC::Int, LibC::Int -> LibC::Int*), find_custom_op_external : (Void*, LibC::Char*, LibC::Int -> LibC::Int*), find_builtin_op : (Void*, BuiltinOperator, LibC::Int -> LibC::Int*), find_custom_op : (Void*, LibC::Char*, LibC::Int -> LibC::Int*), op_resolver_user_data : Void*)
   fun interpreter_options_set_op_resolver = TfLiteInterpreterOptionsSetOpResolver(options : InterpreterOptions, find_builtin_op : (Void*, BuiltinOperator, LibC::Int -> LibC::Int*), find_custom_op : (Void*, LibC::Char*, LibC::Int -> LibC::Int*), op_resolver_user_data : Void*)
+  fun interpreter_options_set_op_resolver_v3 = TfLiteInterpreterOptionsSetOpResolverV3(options : InterpreterOptions, find_builtin_op_v3 : (Void*, BuiltinOperator, LibC::Int -> LibC::Int*), find_custom_op_v3 : (Void*, LibC::Char*, LibC::Int -> LibC::Int*), op_resolver_user_data : Void*)
   fun interpreter_options_set_op_resolver_v2 = TfLiteInterpreterOptionsSetOpResolverV2(options : InterpreterOptions, find_builtin_op_v2 : (Void*, BuiltinOperator, LibC::Int -> LibC::Int*), find_custom_op_v2 : (Void*, LibC::Char*, LibC::Int -> LibC::Int*), op_resolver_user_data : Void*)
   fun interpreter_options_set_op_resolver_v1 = TfLiteInterpreterOptionsSetOpResolverV1(options : InterpreterOptions, find_builtin_op_v1 : (Void*, BuiltinOperator, LibC::Int -> LibC::Int*), find_custom_op_v1 : (Void*, LibC::Char*, LibC::Int -> LibC::Int*), op_resolver_user_data : Void*)
   fun interpreter_create_with_selected_ops = TfLiteInterpreterCreateWithSelectedOps(model : Model, options : InterpreterOptions) : Interpreter
@@ -473,4 +544,23 @@ lib LibTensorflowLite
   fun signature_runner_get_output_tensor = TfLiteSignatureRunnerGetOutputTensor(signature_runner : SignatureRunner, output_name : LibC::Char*) : Tensor
   fun signature_runner_cancel = TfLiteSignatureRunnerCancel(signature_runner : SignatureRunner) : Status
   fun signature_runner_delete = TfLiteSignatureRunnerDelete(signature_runner : SignatureRunner)
+  # fun interpreter_options_set_telemetry_profiler = TfLiteInterpreterOptionsSetTelemetryProfiler(options : InterpreterOptions, profiler : TelemetryProfilerStruct*)
+  fun gpu_delegate_options_v2_default = TfLiteGpuDelegateOptionsV2Default : GpuDelegateOptionsV2
+
+  struct GpuDelegateOptionsV2
+    is_precision_loss_allowed : Int32T
+    inference_preference : Int32T
+    inference_priority1 : Int32T
+    inference_priority2 : Int32T
+    inference_priority3 : Int32T
+    experimental_flags : Int64T
+    max_delegated_partitions : Int32T
+    serialization_dir : LibC::Char*
+    model_token : LibC::Char*
+  end
+
+  alias X__Int64T = LibC::Long
+  alias Int64T = X__Int64T
+  fun gpu_delegate_v2_create = TfLiteGpuDelegateV2Create(options : GpuDelegateOptionsV2*) : Delegate
+  fun gpu_delegate_v2_delete = TfLiteGpuDelegateV2Delete(delegate : Delegate)
 end
