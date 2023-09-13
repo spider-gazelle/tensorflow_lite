@@ -11,4 +11,4 @@ authors:
 license: MIT
 
 scripts:
-  postinstall: /bin/sh ./build_tensorflowlite.sh IS_LIB
+  postinstall: crystal ./src/tensorflow_lite/install.cr --install
