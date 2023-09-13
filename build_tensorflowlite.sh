@@ -16,6 +16,9 @@ echo "--"
 # clone the required repositories
 git clone --depth 1 https://github.com/tensorflow/tensorflow
 cd tensorflow
+git fetch origin refs/tags/v2.13.0:refs/tags/v2.13.0
+git checkout v2.13.0
+
 git apply ../tensorflow.patch
 cd ..
 
@@ -32,7 +35,7 @@ echo "--"
 echo "building..."
 echo "--"
 
-cmake --build . -j2 || true
+cmake --build . -j3 || true
 
 FILE=./libtensorflowlite_c.so
 if test -f "$FILE"; then
@@ -79,8 +82,8 @@ fi
 
 cd ..
 
-rm -rf ./tensorflow
-rm -rf ./tflite_build
+# rm -rf ./tensorflow
+# rm -rf ./tflite_build
 
 echo "--"
 echo "Done"
