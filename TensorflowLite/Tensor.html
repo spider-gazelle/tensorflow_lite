@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Crystal Docs 1.9.2">
+<meta name="generator" content="Crystal Docs 1.11.2">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="tensorflow_lite">
 
@@ -245,7 +245,7 @@ The shape of a tensor is the number of elements in each dimension.</p>
   </h2>
   
     
-      <a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L17" target="_blank">
+      <a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L17" target="_blank">
         tensorflow_lite/tensor.cr
       </a>
     
@@ -274,6 +274,27 @@ The shape of a tensor is the number of elements in each dimension.</p>
   </ul>
 
 
+
+
+
+  <h2>
+    <a id="macro-summary" class="anchor" href="#macro-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Macro Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#to_type%28klass%29-macro" class="signature"><strong>to_type</strong>(klass)</a>
+        
+          <div class="summary"><p>type casts the tensor buffer into the appropriate crystal lang type.</p></div>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -452,27 +473,6 @@ The shape of a tensor is the number of elements in each dimension.</p>
 
 
 
-  <h2>
-    <a id="macro-summary" class="anchor" href="#macro-summary">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Macro Summary
-  </h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#to_type%28klass%29-macro" class="signature"><strong>to_type</strong>(klass)</a>
-        
-          <div class="summary"><p>type casts the tensor buffer into the appropriate crystal lang type.</p></div>
-        
-      </li>
-    
-  </ul>
-
-
-
 <div class="methods-inherited">
   
     
@@ -484,13 +484,6 @@ The shape of a tensor is the number of elements in each dimension.</p>
     
 
 
-  
-    
-
-
-    
-
-
     
 
 
@@ -498,13 +491,6 @@ The shape of a tensor is the number of elements in each dimension.</p>
     
 
 
-    
-
-
-    
-
-
-  
     
 
 
@@ -524,7 +510,39 @@ The shape of a tensor is the number of elements in each dimension.</p>
     
 
 
+    
+
+
   
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
     
 
 
@@ -558,512 +576,13 @@ The shape of a tensor is the number of elements in each dimension.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L20" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L20" target="_blank">View source</a>]
         
       </div>
     </div>
   
 
 
-
-
-
-  <h2>
-    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Instance Method Detail
-  </h2>
-  
-    <div class="entry-detail" id="as_f-instance-method">
-      <div class="signature">
-        
-        def <strong>as_f</strong>
-
-        <a class="method-permalink" href="#as_f-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>provides a view into the tensor buffer as the requested type</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L138" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="as_f32-instance-method">
-      <div class="signature">
-        
-        def <strong>as_f32</strong>
-
-        <a class="method-permalink" href="#as_f32-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>provides a view into the tensor buffer as the requested type</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L128" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="as_f64-instance-method">
-      <div class="signature">
-        
-        def <strong>as_f64</strong>
-
-        <a class="method-permalink" href="#as_f64-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>provides a view into the tensor buffer as the requested type</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L133" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="as_i-instance-method">
-      <div class="signature">
-        
-        def <strong>as_i</strong>
-
-        <a class="method-permalink" href="#as_i-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>provides a view into the tensor buffer as the requested type</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L173" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="as_i16-instance-method">
-      <div class="signature">
-        
-        def <strong>as_i16</strong>
-
-        <a class="method-permalink" href="#as_i16-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>provides a view into the tensor buffer as the requested type</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L158" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="as_i32-instance-method">
-      <div class="signature">
-        
-        def <strong>as_i32</strong>
-
-        <a class="method-permalink" href="#as_i32-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>provides a view into the tensor buffer as the requested type</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L168" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="as_i64-instance-method">
-      <div class="signature">
-        
-        def <strong>as_i64</strong>
-
-        <a class="method-permalink" href="#as_i64-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>provides a view into the tensor buffer as the requested type</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L183" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="as_i8-instance-method">
-      <div class="signature">
-        
-        def <strong>as_i8</strong>
-
-        <a class="method-permalink" href="#as_i8-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>provides a view into the tensor buffer as the requested type</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L148" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="as_type-instance-method">
-      <div class="signature">
-        
-        def <strong>as_type</strong>
-
-        <a class="method-permalink" href="#as_type-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>returns a slice of the data in the correct type</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L188" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="as_u16-instance-method">
-      <div class="signature">
-        
-        def <strong>as_u16</strong>
-
-        <a class="method-permalink" href="#as_u16-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>provides a view into the tensor buffer as the requested type</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L153" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="as_u32-instance-method">
-      <div class="signature">
-        
-        def <strong>as_u32</strong>
-
-        <a class="method-permalink" href="#as_u32-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>provides a view into the tensor buffer as the requested type</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L163" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="as_u64-instance-method">
-      <div class="signature">
-        
-        def <strong>as_u64</strong>
-
-        <a class="method-permalink" href="#as_u64-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>provides a view into the tensor buffer as the requested type</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L178" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="as_u8-instance-method">
-      <div class="signature">
-        
-        def <strong>as_u8</strong>
-
-        <a class="method-permalink" href="#as_u8-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>provides a view into the tensor buffer as the requested type</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L143" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="bytesize:Int32-instance-method">
-      <div class="signature">
-        
-        def <strong>bytesize</strong> : Int32
-
-        <a class="method-permalink" href="#bytesize%3AInt32-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>the size of the buffer backing this tensor</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L42" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="dimension_size(index:Int):Int32-instance-method">
-      <div class="signature">
-        
-        def <strong>dimension_size</strong>(index : Int) : Int32
-
-        <a class="method-permalink" href="#dimension_size%28index%3AInt%29%3AInt32-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>returns the number elements in this dimension or rank index</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L63" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="dimensions:Int32-instance-method">
-      <div class="signature">
-        
-        def <strong>dimensions</strong> : Int32
-
-        <a class="method-permalink" href="#dimensions%3AInt32-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>Returns the number of dimensions (sometimes referred to as rank) of the Tensor.
-Will be 0 for a scalar, 1 for a vector, 2 for a matrix, 3 for a 3-dimensional tensor etc.</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L48" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="io_count-instance-method">
-      <div class="signature">
-        
-        def <strong>io_count</strong>
-
-        <a class="method-permalink" href="#io_count-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>attempts to calculate the number on inputs/outputs based on the type</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L86" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="name:String-instance-method">
-      <div class="signature">
-        
-        def <strong>name</strong> : String
-
-        <a class="method-permalink" href="#name%3AString-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>The friendly name of the tensor</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L39" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="rank-instance-method">
-      <div class="signature">
-        
-        def <strong>rank</strong>
-
-        <a class="method-permalink" href="#rank-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>Returns the number of dimensions (sometimes referred to as rank) of the Tensor.
-Will be 0 for a scalar, 1 for a vector, 2 for a matrix, 3 for a 3-dimensional tensor etc.</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L53" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="raw_data:Bytes-instance-method">
-      <div class="signature">
-        
-        def <strong>raw_data</strong> : Bytes
-
-        <a class="method-permalink" href="#raw_data%3ABytes-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>buffer that makes up the tensor input</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L74" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="size-instance-method">
-      <div class="signature">
-        
-        def <strong>size</strong>
-
-        <a class="method-permalink" href="#size-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>Returns the number of dimensions (sometimes referred to as rank) of the Tensor.
-Will be 0 for a scalar, 1 for a vector, 2 for a matrix, 3 for a 3-dimensional tensor etc.</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L58" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="to_slice-instance-method">
-      <div class="signature">
-        
-        def <strong>to_slice</strong>
-
-        <a class="method-permalink" href="#to_slice-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>buffer that makes up the tensor input</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L81" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="type:Type-instance-method">
-      <div class="signature">
-        
-        def <strong>type</strong> : <a href="../TensorflowLite/Tensor/Type.html">Type</a>
-
-        <a class="method-permalink" href="#type%3AType-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>The datatype this tensor holds</p>
-<p>the type of data it expects as input or provides as output</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L34" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
 
 
 
@@ -1093,7 +612,506 @@ Will be 0 for a scalar, 1 for a vector, 2 for a matrix, 3 for a 3-dimensional te
       <br/>
       <div>
         
-          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/0bf3bb34c6654286b0826294bac7cda878fb7af2/src/tensorflow_lite/tensor.cr#L118" target="_blank">View source</a>]
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L118" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="as_f-instance-method">
+      <div class="signature">
+        
+        def <strong>as_f</strong>
+
+        <a class="method-permalink" href="#as_f-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>provides a view into the tensor buffer as the requested type</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L138" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="as_f32-instance-method">
+      <div class="signature">
+        
+        def <strong>as_f32</strong>
+
+        <a class="method-permalink" href="#as_f32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>provides a view into the tensor buffer as the requested type</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L128" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="as_f64-instance-method">
+      <div class="signature">
+        
+        def <strong>as_f64</strong>
+
+        <a class="method-permalink" href="#as_f64-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>provides a view into the tensor buffer as the requested type</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L133" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="as_i-instance-method">
+      <div class="signature">
+        
+        def <strong>as_i</strong>
+
+        <a class="method-permalink" href="#as_i-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>provides a view into the tensor buffer as the requested type</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L173" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="as_i16-instance-method">
+      <div class="signature">
+        
+        def <strong>as_i16</strong>
+
+        <a class="method-permalink" href="#as_i16-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>provides a view into the tensor buffer as the requested type</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L158" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="as_i32-instance-method">
+      <div class="signature">
+        
+        def <strong>as_i32</strong>
+
+        <a class="method-permalink" href="#as_i32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>provides a view into the tensor buffer as the requested type</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="as_i64-instance-method">
+      <div class="signature">
+        
+        def <strong>as_i64</strong>
+
+        <a class="method-permalink" href="#as_i64-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>provides a view into the tensor buffer as the requested type</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L183" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="as_i8-instance-method">
+      <div class="signature">
+        
+        def <strong>as_i8</strong>
+
+        <a class="method-permalink" href="#as_i8-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>provides a view into the tensor buffer as the requested type</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L148" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="as_type-instance-method">
+      <div class="signature">
+        
+        def <strong>as_type</strong>
+
+        <a class="method-permalink" href="#as_type-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>returns a slice of the data in the correct type</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L188" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="as_u16-instance-method">
+      <div class="signature">
+        
+        def <strong>as_u16</strong>
+
+        <a class="method-permalink" href="#as_u16-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>provides a view into the tensor buffer as the requested type</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L153" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="as_u32-instance-method">
+      <div class="signature">
+        
+        def <strong>as_u32</strong>
+
+        <a class="method-permalink" href="#as_u32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>provides a view into the tensor buffer as the requested type</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L163" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="as_u64-instance-method">
+      <div class="signature">
+        
+        def <strong>as_u64</strong>
+
+        <a class="method-permalink" href="#as_u64-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>provides a view into the tensor buffer as the requested type</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L178" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="as_u8-instance-method">
+      <div class="signature">
+        
+        def <strong>as_u8</strong>
+
+        <a class="method-permalink" href="#as_u8-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>provides a view into the tensor buffer as the requested type</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L143" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="bytesize:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>bytesize</strong> : Int32
+
+        <a class="method-permalink" href="#bytesize%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>the size of the buffer backing this tensor</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L42" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="dimension_size(index:Int):Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>dimension_size</strong>(index : Int) : Int32
+
+        <a class="method-permalink" href="#dimension_size%28index%3AInt%29%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>returns the number elements in this dimension or rank index</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L63" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="dimensions:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>dimensions</strong> : Int32
+
+        <a class="method-permalink" href="#dimensions%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the number of dimensions (sometimes referred to as rank) of the Tensor.
+Will be 0 for a scalar, 1 for a vector, 2 for a matrix, 3 for a 3-dimensional tensor etc.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L48" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="io_count-instance-method">
+      <div class="signature">
+        
+        def <strong>io_count</strong>
+
+        <a class="method-permalink" href="#io_count-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>attempts to calculate the number on inputs/outputs based on the type</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L86" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="name:String-instance-method">
+      <div class="signature">
+        
+        def <strong>name</strong> : String
+
+        <a class="method-permalink" href="#name%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The friendly name of the tensor</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rank-instance-method">
+      <div class="signature">
+        
+        def <strong>rank</strong>
+
+        <a class="method-permalink" href="#rank-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the number of dimensions (sometimes referred to as rank) of the Tensor.
+Will be 0 for a scalar, 1 for a vector, 2 for a matrix, 3 for a 3-dimensional tensor etc.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L53" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="raw_data:Bytes-instance-method">
+      <div class="signature">
+        
+        def <strong>raw_data</strong> : Bytes
+
+        <a class="method-permalink" href="#raw_data%3ABytes-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>buffer that makes up the tensor input</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L74" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="size-instance-method">
+      <div class="signature">
+        
+        def <strong>size</strong>
+
+        <a class="method-permalink" href="#size-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the number of dimensions (sometimes referred to as rank) of the Tensor.
+Will be 0 for a scalar, 1 for a vector, 2 for a matrix, 3 for a 3-dimensional tensor etc.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L58" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_slice-instance-method">
+      <div class="signature">
+        
+        def <strong>to_slice</strong>
+
+        <a class="method-permalink" href="#to_slice-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>buffer that makes up the tensor input</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L81" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="type:Type-instance-method">
+      <div class="signature">
+        
+        def <strong>type</strong> : <a href="../TensorflowLite/Tensor/Type.html">Type</a>
+
+        <a class="method-permalink" href="#type%3AType-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The datatype this tensor holds</p>
+<p>the type of data it expects as input or provides as output</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/spider-gazelle/tensorflow_lite/blob/4e5b8539d550b0b53bc61471a3f5ee8aa7f7da04/src/tensorflow_lite/tensor.cr#L34" target="_blank">View source</a>]
         
       </div>
     </div>
