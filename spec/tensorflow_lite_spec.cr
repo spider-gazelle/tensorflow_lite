@@ -111,5 +111,39 @@ module TensorflowLite
       client.outputs.size.should eq 4
       client.labels.as(Array(String)).size.should eq 90
     end
+
+    it "works with quantized models" do
+      model_path = Path.new File.join(__DIR__, "./test_data/xor_model_quantized.tflite")
+      quantized_test = {
+        {input: {-128_i8, -128_i8}, result: 0},
+        {input: {127_i8, -128_i8}, result: 1},
+        {input: {-128_i8, 127_i8}, result: 1},
+        {input: {127_i8, 127_i8}, result: 0},
+      }
+
+      client = TensorflowLite::Client.new(model_path)
+
+      quantized_test.each do |test|
+        inputs = test[:input]
+        expected = test[:result]
+
+        # configure inputs
+        ints = client[0].as_i8
+        ints[0], ints[1] = inputs
+        client[0].as_i8.should eq client[0].as_type.as(Slice(Int8))
+
+        # run through NN
+        client.invoke!
+
+        # check results
+        ints = client.output.as_i8
+        result = ints[0] >= 0_i8 ? 1 : 0
+
+        result.should eq expected
+      end
+
+      client.outputs.size.should eq 1
+      client.output.should eq client.outputs[0]
+    end
   end
 end
