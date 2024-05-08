@@ -5,7 +5,7 @@ echo "installing required packages"
 echo "================================================="
 
 sudo apt update && apt install -y \
-    libusb-dev \
+    libabsl-dev \
     libusb-1.0-0-dev
 
 FILE=/usr/local/lib/libflatbuffers.so.23.5.26
