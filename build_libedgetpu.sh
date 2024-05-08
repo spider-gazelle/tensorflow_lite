@@ -54,9 +54,15 @@ git cherry-pick dff851aa3124afce5f7d149c843d82b14c05c075
 export TFROOT=../tensorflow
 make -f makefile_build/Makefile -j$(nproc) libedgetpu
 
+# copy into place and update cache
+cp ./out/direct/k8/libedgetpu.so.1.0 /usr/local/lib/libedgetpu.so
+cp ./out/direct/k8/libedgetpu.so.1.0 /usr/local/lib/libedgetpu.so.1
+ldconfig
+
 echo "================================================="
 echo "finished, cleaning up"
 echo "================================================="
 
 cd ..
 rm -rf ./tensorflow
+rm -rf ./libedgetpu
