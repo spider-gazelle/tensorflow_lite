@@ -14,13 +14,7 @@ echo "preparing... (requires build-essential and cmake)"
 echo "--"
 
 # clone the required repositories
-git clone --depth 1 https://github.com/tensorflow/tensorflow
-cd tensorflow
-git fetch origin refs/tags/v2.13.0:refs/tags/v2.13.0
-git checkout v2.13.0
-
-git apply ../tensorflow.patch
-cd ..
+git clone --depth 1 --branch "v2.16.1" https://github.com/tensorflow/tensorflow
 
 echo "--"
 echo "configuring..."
