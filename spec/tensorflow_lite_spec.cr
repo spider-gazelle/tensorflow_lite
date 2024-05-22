@@ -188,7 +188,7 @@ module TensorflowLite
     end
 
     it "works with quantized models" do
-      model_path = Path.new File.join(__DIR__, "./test_data/xor_model_quantized.tflite")
+      quant_path = Path.new File.join(__DIR__, "./test_data/xor_model_quantized.tflite")
       quantized_test = {
         {input: {-128_i8, -128_i8}, result: 0},
         {input: {127_i8, -128_i8}, result: 1},
@@ -196,7 +196,7 @@ module TensorflowLite
         {input: {127_i8, 127_i8}, result: 0},
       }
 
-      client = TensorflowLite::Client.new(model_path)
+      client = TensorflowLite::Client.new(quant_path)
 
       quantized_test.each do |test|
         inputs = test[:input]

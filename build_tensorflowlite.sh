@@ -76,8 +76,8 @@ fi
 
 cd ..
 
-# rm -rf ./tensorflow
-# rm -rf ./tflite_build
+rm -rf ./tensorflow
+rm -rf ./tflite_build
 
 echo "--"
 echo "Done"
