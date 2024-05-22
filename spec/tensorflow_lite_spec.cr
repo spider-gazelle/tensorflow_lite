@@ -112,43 +112,77 @@ module TensorflowLite
       client.labels.as(Array(String)).size.should eq 90
     end
 
-    it "can add a GPU delegate to the interpreter options" do
-      # we have to skip this test if there is no hardware installed
-      # however at least we know it compiles
-      file_io = File.new(model_path)
-      file_data = Bytes.new(file_io.size)
-      file_io.read_fully(file_data)
-      file_io.close
+    describe TensorflowLite do
+      it "can add a GPU delegate" do
+        # it will fallback to CPU for this test if there is no hardware installed
+        # however at least we know it compiles
+        file_io = File.new(model_path)
+        file_data = Bytes.new(file_io.size)
+        file_io.read_fully(file_data)
+        file_io.close
 
-      {Model.new(model_path), Model.new(file_data)}.each do |model|
-        opts = InterpreterOptions.new
-        opts.add_delegate DelegateGPU.new
-        opts.on_error do |error_msg|
-          puts "error was #{error_msg}"
+        {Model.new(model_path), Model.new(file_data)}.each do |model|
+          opts = InterpreterOptions.new
+          opts.on_error do |error_msg|
+            puts "error was #{error_msg}"
+          end
+          interpreter = Interpreter.new(model, opts)
+
+          gpu = DelegateGPU.new
+          interpreter.modify_graph_with_delegate gpu
+
+          xor_test.each do |test|
+            inputs = test[:input]
+            expected = test[:result]
+
+            # configure inputs
+            input_tensor = interpreter.input_tensor(0)
+            input_tensor.raw_data.bytesize.should eq input_tensor.bytesize
+            input_tensor.size.should eq 2
+
+            floats = input_tensor.as_f32
+            floats[0], floats[1] = inputs
+
+            # run through NN
+            interpreter.invoke!
+
+            # check results
+            output_tensor = interpreter.output_tensor(0)
+            floats = output_tensor.as_f32
+            result = (floats[0] + 0.5_f32).to_i
+
+            result.should eq expected
+          end
         end
-        interpreter = Interpreter.new(model, opts)
+      end
 
-        xor_test.each do |test|
-          inputs = test[:input]
-          expected = test[:result]
+      it "can add a GPU delegate to the client" do
+        # it will fallback to CPU for this test if there is no hardware installed
+        file_io = File.new(model_path)
+        file_data = Bytes.new(file_io.size)
+        file_io.read_fully(file_data)
+        file_io.close
 
-          # configure inputs
-          input_tensor = interpreter.input_tensor(0)
-          input_tensor.raw_data.bytesize.should eq input_tensor.bytesize
-          input_tensor.size.should eq 2
+        {Model.new(model_path), Model.new(file_data)}.each do |model|
+          client = TensorflowLite::Client.new(model_path, delegate: DelegateGPU.new)
 
-          floats = input_tensor.as_f32
-          floats[0], floats[1] = inputs
+          xor_test.each do |test|
+            inputs = test[:input]
+            expected = test[:result]
 
-          # run through NN
-          interpreter.invoke!
+            # configure inputs
+            floats = client[0].as_f32
+            floats[0], floats[1] = inputs
 
-          # check results
-          output_tensor = interpreter.output_tensor(0)
-          floats = output_tensor.as_f32
-          result = (floats[0] + 0.5_f32).to_i
+            # run through NN
+            client.invoke!
 
-          result.should eq expected
+            # check results
+            floats = client.output.as_f32
+            result = (floats[0] + 0.5_f32).to_i
+
+            result.should eq expected
+          end
         end
       end
     end

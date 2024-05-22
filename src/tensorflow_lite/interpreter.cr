@@ -1,4 +1,5 @@
 require "./model"
+require "./delegate"
 require "./interpreter_options"
 
 # The Interpreter takes a model, loads it, and allows you to run (or "interpret") the model, i.e., to use it to make predictions based on input data.
@@ -65,13 +66,10 @@ class TensorflowLite::Interpreter
   alias Status = LibTensorflowLite::Status
 
   # :nodoc:
-  alias Delegate = LibTensorflowLite::Delegate
-
-  # :nodoc:
   # provides a method to add a delegate after initialization.
   # Recommended that delegates are configured via `InterpreterOptions`
   def modify_graph_with_delegate(delegate : Delegate) : Status
-    LibTensorflowLite.interpreter_modify_graph_with_delegate(self, delegate)
+    LibTensorflowLite.interpreter_modify_graph_with_delegate(self, delegate.to_unsafe.value)
   end
 
   # runs the model and returns the result status
