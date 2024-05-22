@@ -52,12 +52,19 @@ RUN git clone https://github.com/google-coral/libedgetpu
 WORKDIR /tensorflow/libedgetpu
 
 # Build TensorFlow Lite GPU delegate (excluding Android, linux only)
-RUN make libedgetpu-direct
-
-# Copy the built shared libraries to /usr/local/lib
-RUN mkdir -p /usr/local/lib && \
-    cp /tensorflow/libedgetpu/out/direct/k8/libedgetpu.so.1.0 /usr/local/lib/libedgetpu.so
-
+ARG TARGETPLATFORM
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
+        make libedgetpu-direct CPU=k8 && \
+        mkdir -p /usr/local/lib && \
+        cp /tensorflow/libedgetpu/out/direct/k8/libedgetpu.so.1.0 /usr/local/lib/libedgetpu.so; \
+    elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then \
+        make libedgetpu-direct CPU=aarch64 && \
+        mkdir -p /usr/local/lib && \
+        cp /tensorflow/libedgetpu/out/direct/aarch64/libedgetpu.so.1.0 /usr/local/lib/libedgetpu.so; \
+    else \
+        echo "Unknown platform"; \
+        exit 1; \
+    fi
 
 # ==================================
 # Build tensorflow lite GPU delegate
