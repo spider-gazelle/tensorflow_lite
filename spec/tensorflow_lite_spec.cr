@@ -112,8 +112,83 @@ module TensorflowLite
       client.labels.as(Array(String)).size.should eq 90
     end
 
+    describe TensorflowLite do
+      it "can add a GPU delegate" do
+        # it will fallback to CPU for this test if there is no hardware installed
+        # however at least we know it compiles
+        file_io = File.new(model_path)
+        file_data = Bytes.new(file_io.size)
+        file_io.read_fully(file_data)
+        file_io.close
+
+        {Model.new(model_path), Model.new(file_data)}.each do |model|
+          opts = InterpreterOptions.new
+          opts.on_error do |error_msg|
+            puts "error was #{error_msg}"
+          end
+          interpreter = Interpreter.new(model, opts)
+
+          gpu = DelegateGPU.new
+          interpreter.modify_graph_with_delegate gpu
+
+          xor_test.each do |test|
+            inputs = test[:input]
+            expected = test[:result]
+
+            # configure inputs
+            input_tensor = interpreter.input_tensor(0)
+            input_tensor.raw_data.bytesize.should eq input_tensor.bytesize
+            input_tensor.size.should eq 2
+
+            floats = input_tensor.as_f32
+            floats[0], floats[1] = inputs
+
+            # run through NN
+            interpreter.invoke!
+
+            # check results
+            output_tensor = interpreter.output_tensor(0)
+            floats = output_tensor.as_f32
+            result = (floats[0] + 0.5_f32).to_i
+
+            result.should eq expected
+          end
+        end
+      end
+
+      it "can add a GPU delegate to the client" do
+        # it will fallback to CPU for this test if there is no hardware installed
+        file_io = File.new(model_path)
+        file_data = Bytes.new(file_io.size)
+        file_io.read_fully(file_data)
+        file_io.close
+
+        {Model.new(model_path), Model.new(file_data)}.each do |model|
+          client = TensorflowLite::Client.new(model, delegate: DelegateGPU.new)
+
+          xor_test.each do |test|
+            inputs = test[:input]
+            expected = test[:result]
+
+            # configure inputs
+            floats = client[0].as_f32
+            floats[0], floats[1] = inputs
+
+            # run through NN
+            client.invoke!
+
+            # check results
+            floats = client.output.as_f32
+            result = (floats[0] + 0.5_f32).to_i
+
+            result.should eq expected
+          end
+        end
+      end
+    end
+
     it "works with quantized models" do
-      model_path = Path.new File.join(__DIR__, "./test_data/xor_model_quantized.tflite")
+      quant_path = Path.new File.join(__DIR__, "./test_data/xor_model_quantized.tflite")
       quantized_test = {
         {input: {-128_i8, -128_i8}, result: 0},
         {input: {127_i8, -128_i8}, result: 1},
@@ -121,7 +196,7 @@ module TensorflowLite
         {input: {127_i8, 127_i8}, result: 0},
       }
 
-      client = TensorflowLite::Client.new(model_path)
+      client = TensorflowLite::Client.new(quant_path)
 
       quantized_test.each do |test|
         inputs = test[:input]

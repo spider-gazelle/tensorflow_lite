@@ -47,10 +47,15 @@ class TensorflowLite::Client
     if threads
       @options.num_threads(threads)
     end
-    if delegate
-      @options.add_delegate delegate
+
+    case delegate
+    when DelegateGPU
+      @interpreter = Interpreter.new(@model, @options)
+      @interpreter.modify_graph_with_delegate delegate
+    else
+      @options.add_delegate(delegate) if delegate
+      @interpreter = Interpreter.new(@model, @options)
     end
-    @interpreter = Interpreter.new(@model, @options)
   end
 
   getter model : Model

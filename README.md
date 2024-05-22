@@ -78,6 +78,35 @@ To update tensorflow lite bindings `./generate_bindings.sh`
 
 ### lib installation
 
+#### Dockerfile
+
+The dockerfile is used to build a compatible tensorflow build for target platforms.
+There is an image pre-built at `docker pull stakach/tensorflowlite:latest`
+
+To build an image run:
+
+```shell
+docker buildx build --progress=plain --platform linux/arm64,linux/amd64 -t stakach/tensorflowlite:latest --push .
+```
+
+to extract the libraries
+
+```shell
+mkdir -p ./ext
+docker pull stakach/tensorflowlite:latest
+docker create --name tflite_tmp stakach/tensorflowlite:latest true
+
+docker cp tflite_tmp:/usr/local/lib/libedgetpu.so ./ext/libedgetpu.so
+docker cp tflite_tmp:/usr/local/lib/libtensorflowlite_c.so ./ext/libtensorflowlite_c.so
+docker cp tflite_tmp:/usr/local/lib/libtensorflowlite_gpu_delegate.so ./ext/libtensorflowlite_gpu_delegate.so
+
+docker rm tflite_tmp
+```
+
+this operation is performed post-install by this library
+
+#### Old method
+
 Requires [libtensorflow](https://www.tensorflow.org/install/lang_c) to be installed, this is handled automatically by `./build_tensorflowlite.sh`
 
 * there is a [guide to building it](https://www.tensorflow.org/lite/guide/build_cmake)
