@@ -39,14 +39,14 @@ cp ./ext/libtensorflowlite_gpu_delegate.so ~/.cache/crystal/
 if [ "$1" = "$SHARDS_INSTALL" ]; then
   echo "copying into parent directory.."
   mkdir -p ../../bin
-  ln -s ./ext/libedgetpu.so ../../bin/libedgetpu.so
-  ln -s ./ext/libedgetpu.so ../../libedgetpu.so
+  ln -s $(pwd)/ext/libedgetpu.so ../../bin/libedgetpu.so
+  ln -s $(pwd)/ext/libedgetpu.so ../../libedgetpu.so
 
-  ln -s ./ext/libtensorflowlite_c.so ../../bin/libtensorflowlite_c.so
-  ln -s ./ext/libtensorflowlite_c.so ../../libtensorflowlite_c.so
+  ln -s $(pwd)/ext/libtensorflowlite_c.so ../../bin/libtensorflowlite_c.so
+  ln -s $(pwd)/ext/libtensorflowlite_c.so ../../libtensorflowlite_c.so
 
-  ln -s ./ext/libtensorflowlite_gpu_delegate.so ../../bin/libtensorflowlite_gpu_delegate.so
-  ln -s ./ext/libtensorflowlite_gpu_delegate.so ../../libtensorflowlite_gpu_delegate.so
+  ln -s $(pwd)/ext/libtensorflowlite_gpu_delegate.so ../../bin/libtensorflowlite_gpu_delegate.so
+  ln -s $(pwd)/ext/libtensorflowlite_gpu_delegate.so ../../libtensorflowlite_gpu_delegate.so
 else
   echo "run manually, assuming library development"
 fi
