@@ -164,7 +164,7 @@ module TensorflowLite
         file_io.close
 
         {Model.new(model_path), Model.new(file_data)}.each do |model|
-          client = TensorflowLite::Client.new(model_path, delegate: DelegateGPU.new)
+          client = TensorflowLite::Client.new(model, delegate: DelegateGPU.new)
 
           xor_test.each do |test|
             inputs = test[:input]
