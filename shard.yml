@@ -1,5 +1,5 @@
 name: tensorflow_lite
-version: 2.1.3
+version: 2.2.0
 
 development_dependencies:
   ameba:
