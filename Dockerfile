@@ -56,11 +56,13 @@ ARG TARGETPLATFORM
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
         make libedgetpu-direct CPU=k8 && \
         mkdir -p /usr/local/lib && \
-        cp /tensorflow/libedgetpu/out/direct/k8/libedgetpu.so.1.0 /usr/local/lib/libedgetpu.so; \
+        cp /tensorflow/libedgetpu/out/direct/k8/libedgetpu.so.1.0 /usr/local/lib/libedgetpu.so && \
+        cp /usr/lib/x86_64-linux-gnu/libOpenCL.so /usr/local/lib/libOpenCL.so; \
     elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then \
         make libedgetpu-direct CPU=aarch64 && \
         mkdir -p /usr/local/lib && \
-        cp /tensorflow/libedgetpu/out/direct/aarch64/libedgetpu.so.1.0 /usr/local/lib/libedgetpu.so; \
+        cp /tensorflow/libedgetpu/out/direct/aarch64/libedgetpu.so.1.0 /usr/local/lib/libedgetpu.so && \
+        cp /usr/lib/aarch64-linux-gnu/libOpenCL.so /usr/local/lib/libOpenCL.so; \
     else \
         echo "Unknown platform"; \
         exit 1; \
@@ -128,3 +130,6 @@ FROM scratch
 COPY --from=build /usr/local/lib/libedgetpu.so /usr/local/lib/libedgetpu.so
 COPY --from=build /usr/local/lib/libtensorflowlite_c.so /usr/local/lib/libtensorflowlite_c.so
 COPY --from=build /usr/local/lib/libtensorflowlite_gpu_delegate.so /usr/local/lib/libtensorflowlite_gpu_delegate.so
+
+# copy the opencl lib
+COPY --from=build /usr/local/lib/libOpenCL.so /usr/local/lib/libOpenCL.so
