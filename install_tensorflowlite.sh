@@ -31,6 +31,7 @@ docker rm tflite_tmp
 # Temp location crystal runs applications from
 mkdir -p ~/.cache/crystal/
 cp ./ext/libedgetpu.so ~/.cache/crystal/
+ln -s ~/.cache/crystal/libedgetpu.so ~/.cache/crystal/libedgetpu.so.1
 cp ./ext/libtensorflowlite_c.so ~/.cache/crystal/
 cp ./ext/libtensorflowlite_gpu_delegate.so ~/.cache/crystal/
 
@@ -41,6 +42,8 @@ if [ "$1" = "$SHARDS_INSTALL" ]; then
   mkdir -p ../../bin
   ln -s $(pwd)/ext/libedgetpu.so ../../bin/libedgetpu.so
   ln -s $(pwd)/ext/libedgetpu.so ../../libedgetpu.so
+  ln -s $(pwd)/ext/libedgetpu.so ../../libedgetpu.so.1
+  ln -s $(pwd)/ext/libedgetpu.so $(pwd)/ext/libedgetpu.so.1
 
   ln -s $(pwd)/ext/libtensorflowlite_c.so ../../bin/libtensorflowlite_c.so
   ln -s $(pwd)/ext/libtensorflowlite_c.so ../../libtensorflowlite_c.so
